@@ -14,28 +14,54 @@ export async function onRequest({ request, env }) {
         // --- POST (PreMiD sends activity here) ---
         if (request.method === "POST") {
             let body;
-
             try {
                 body = await request.json();
             } catch {
                 return new Response("Invalid JSON", { status: 400 });
             }
 
-            const storedData = {
-                ...body,
-                last_updated: Date.now()
-            };
-
             if (!env.PREMID_STORE) {
                 return new Response("KV not bound", { status: 500 });
             }
 
-            await env.PREMID_STORE.put(
-                "activity",
-                JSON.stringify(storedData)
-            );
+            // --- Optimization: Only write if data changed or 5 mins passed ---
+            const existingValue = await env.PREMID_STORE.get("activity");
+            let shouldUpdate = true;
 
-            return new Response("OK", {
+            if (existingValue) {
+                try {
+                    const oldData = JSON.parse(existingValue);
+                    const oldTimestamp = oldData.last_updated || 0;
+
+                    // Create a copy for comparison without the timestamp
+                    const { last_updated, ...oldActivity } = oldData;
+
+                    // JSON stringify is a simple way to compare objects
+                    const isSameActivity = JSON.stringify(oldActivity) === JSON.stringify(body);
+                    const isRecent = (Date.now() - oldTimestamp) < 300000; // 5 minutes
+
+                    if (isSameActivity && isRecent) {
+                        shouldUpdate = false;
+                    }
+                } catch (e) {
+                    // If parsing fails, just update anyway
+                    shouldUpdate = true;
+                }
+            }
+
+            if (shouldUpdate) {
+                const storedData = {
+                    ...body,
+                    last_updated: Date.now()
+                };
+
+                await env.PREMID_STORE.put(
+                    "activity",
+                    JSON.stringify(storedData)
+                );
+            }
+
+            return new Response(shouldUpdate ? "Updated" : "Ignored (No Change)", {
                 status: 200,
                 headers: { "Access-Control-Allow-Origin": "*" }
             });
@@ -80,7 +106,8 @@ export async function onRequest({ request, env }) {
             return new Response(JSON.stringify(data), {
                 headers: {
                     "content-type": "application/json",
-                    "Access-Control-Allow-Origin": "*"
+                    "Access-Control-Allow-Origin": "*",
+                    "Cache-Control": "public, max-age=30, s-maxage=30"
                 }
             });
         }
