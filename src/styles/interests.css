@@ -24,11 +24,11 @@
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     width: 140px;
-    /* Consistent width */
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border-color);
     cursor: pointer;
     position: relative;
+    overflow: hidden;
 }
 
 .interest-item:hover {
@@ -40,10 +40,90 @@
 .interest-item.active {
     border-color: var(--accent-color);
     background-color: var(--card-bg);
-    transform: scale(1.05);
-    /* Slight scale instead of expansion */
 }
 
+/* DESKTOP ONLY: Description Area */
+@media (min-width: 769px) {
+    .interest-item.active {
+        transform: scale(1.05);
+    }
+
+    .interest-inline-description {
+        display: none;
+        /* Hide inline on desktop */
+    }
+
+    .interest-detail-view {
+        max-width: 700px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background-color: var(--card-bg);
+        border-radius: 20px;
+        border: 1px solid var(--border-color);
+        min-height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .interest-detail-view.visible {
+        border-color: var(--accent-color);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* MOBILE ONLY: Inline Expansion */
+@media (max-width: 768px) {
+    .interest-detail-view {
+        display: none;
+        /* Hide bottom area on mobile */
+    }
+
+    .interest-item {
+        width: 150px;
+        /* Base mobile width */
+    }
+
+    .interest-item.active {
+        width: 100%;
+        /* Expand width on mobile */
+        max-width: 340px;
+    }
+
+    .interest-inline-description {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        text-align: center;
+        width: 100%;
+    }
+
+    .interest-item.active .interest-inline-description {
+        max-height: 500px;
+        opacity: 1;
+        margin-top: 1.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .about-socials {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .about-social-link {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+}
+
+/* Shared UI Elements */
 .interest-icon {
     color: var(--accent-color);
     width: 48px;
@@ -68,29 +148,6 @@
     width: 100%;
 }
 
-/* New Detail View Area */
-.interest-detail-view {
-    max-width: 700px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: var(--card-bg);
-    border-radius: 20px;
-    border: 1px solid var(--border-color);
-    min-height: 160px;
-    /* Stable height to prevent content jumping */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.interest-detail-view.visible {
-    border-color: var(--accent-color);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
 .detail-content {
     animation: fadeIn 0.4s ease forwards;
 }
@@ -110,10 +167,12 @@
     color: var(--text-color);
 }
 
-.detail-content p {
+.detail-content p,
+.interest-inline-description p {
     color: var(--text-secondary);
     line-height: 1.6;
     font-size: 1.1rem;
+    margin: 0;
 }
 
 .detail-placeholder p {
@@ -134,7 +193,6 @@
     }
 }
 
-/* About Socials */
 .about-socials {
     display: flex;
     justify-content: center;
@@ -175,23 +233,4 @@
 .about-social-link.ngl:hover {
     color: #FF3B5C;
     border-color: #FF3B5C;
-}
-
-@media (max-width: 768px) {
-    .interest-item {
-        width: 120px;
-        padding: var(--spacing-md);
-    }
-
-    .interest-detail-view {
-        margin: 1.5rem 1rem;
-        padding: 1.5rem;
-        min-height: 200px;
-    }
-
-    .about-social-link {
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
-    }
 }
