@@ -32,6 +32,22 @@ export default function About() {
                 Hello again, im cool guy (i think) who likes shit ton of things, i'm always happy and open to try new things, other then that i... mhhhh... idk...
             </p>
 
+            <div className={`interest-detail-view ${activeInterest ? 'visible' : ''}`}>
+                {activeInterest ? (
+                    <div className="detail-content">
+                        <div className="detail-header">
+                            {activeInterest.icon}
+                            <h3>{activeInterest.name}</h3>
+                        </div>
+                        <p>{activeInterest.description}</p>
+                    </div>
+                ) : (
+                    <div className="detail-placeholder">
+                        <p>Click on an interest to learn more!</p>
+                    </div>
+                )}
+            </div>
+
             <div className="interests-container">
                 {interests.map((item) => (
                     <div
@@ -50,22 +66,6 @@ export default function About() {
                         </div>
                     </div>
                 ))}
-            </div>
-
-            <div className={`interest-detail-view ${activeInterest ? 'visible' : ''}`}>
-                {activeInterest ? (
-                    <div className="detail-content">
-                        <div className="detail-header">
-                            {activeInterest.icon}
-                            <h3>{activeInterest.name}</h3>
-                        </div>
-                        <p>{activeInterest.description}</p>
-                    </div>
-                ) : (
-                    <div className="detail-placeholder">
-                        <p>Click on an interest to learn more!</p>
-                    </div>
-                )}
             </div>
 
 
