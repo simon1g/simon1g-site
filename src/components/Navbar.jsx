@@ -23,7 +23,7 @@ export default function Navbar() {
         };
 
         fetchStatus();
-        const interval = setInterval(fetchStatus, 10000);
+        const interval = setInterval(fetchStatus, 50000);
         return () => clearInterval(interval);
     }, []);
 
