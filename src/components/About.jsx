@@ -41,17 +41,21 @@ export default function About() {
                         onMouseLeave={() => setActiveInterest(null)}
                         onClick={() => setActiveInterest(activeInterest?.name === item.name ? null : item)}
                     >
-                        <div className="interest-icon">
-                            {item.icon}
+                        <div className="interest-header">
+                            <div className="interest-icon">
+                                {item.icon}
+                            </div>
+                            <span className="interest-name">{item.name}</span>
                         </div>
-                        <span className="interest-name">{item.name}</span>
+
+                        <div className={`interest-inline-description ${activeInterest?.name === item.name ? 'visible' : ''}`}>
+                            <p>{item.description}</p>
+                        </div>
                     </div>
                 ))}
             </div>
 
-            <div className={`interest-description-box ${activeInterest ? 'visible' : ''}`}>
-                <p>{activeInterest?.description || ''}</p>
-            </div>
+
 
             <div className="about-socials">
                 <a href="https://twitter.com/simon1g_" target="_blank" rel="noopener noreferrer" className="about-social-link twitter">

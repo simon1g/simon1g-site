@@ -10,25 +10,38 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: var(--spacing-lg);
+    align-items: flex-start;
+    /* Prevents other items in row from stretching */
+    padding: 1rem;
 }
 
 .interest-item {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-md);
     padding: var(--spacing-lg);
     background-color: var(--bg-color);
-    border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    width: 150px;
-    transition: transform 0.3s ease;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 160px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border-color);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
 .interest-item:hover {
     transform: translateY(-5px);
     border-color: var(--accent-color);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.interest-item.active {
+    width: 300px;
+    /* Significantly wider to show text */
+    border-color: var(--accent-color);
+    background-color: var(--card-bg);
 }
 
 .interest-icon {
@@ -45,36 +58,49 @@
     text-align: center;
 }
 
-/* Interest Description Box */
-.interest-description-box {
-    margin: 2rem auto;
-    max-width: 600px;
-    padding: 1.5rem;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    text-align: center;
-    min-height: 80px;
+.interest-header {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+.interest-inline-description {
+    max-height: 0;
     opacity: 0;
-    transform: translateY(10px);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    text-align: center;
+    width: 100%;
 }
 
-.interest-description-box.visible {
+.interest-item.active .interest-inline-description {
+    max-height: 300px;
     opacity: 1;
-    transform: translateY(0);
-    border-color: var(--accent-color);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
 }
 
-.interest-description-box p {
+.interest-inline-description p {
     margin: 0;
     color: var(--text-primary);
-    font-size: 1.1rem;
-    line-height: 1.5;
+    font-size: 1rem;
+    line-height: 1.6;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -133,6 +159,11 @@
 }
 
 @media (max-width: 768px) {
+    .interest-item.active {
+        width: 100%;
+        max-width: 340px;
+    }
+
     .about-socials {
         flex-direction: column;
         align-items: center;
