@@ -6,7 +6,26 @@ import '../styles/navbar.css';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const [isOnline, setIsOnline] = useState(false); // In a real app, fetch this status
+    const [isOnline, setIsOnline] = useState(false);
+
+    React.useEffect(() => {
+        const API_ENDPOINT = 'https://simon1g-site.pages.dev/api/premid';
+        const fetchStatus = async () => {
+            try {
+                const res = await fetch(API_ENDPOINT);
+                if (res.ok) {
+                    const data = await res.json();
+                    setIsOnline(!!data?.active_activity);
+                }
+            } catch (error) {
+                console.error("Status fetch error", error);
+            }
+        };
+
+        fetchStatus();
+        const interval = setInterval(fetchStatus, 10000);
+        return () => clearInterval(interval);
+    }, []);
 
     const toggleMenu = () => setIsOpen(!isOpen);
 

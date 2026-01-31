@@ -45,7 +45,7 @@
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.2s;
-    border-radius: 6px;
+    border-radius: 0;
     padding-right: var(--spacing-sm);
 }
 
