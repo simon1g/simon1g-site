@@ -1,20 +1,20 @@
 import React from 'react';
-import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube, Music } from 'lucide-react';
+import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube, Music, MessageCircle } from 'lucide-react';
 import '../styles/interests.css';
 
 export default function About() {
     const [activeInterest, setActiveInterest] = React.useState(null);
 
     const interests = [
-        { name: 'Astronomy', icon: <Star size={32} />, description: 'Placeholder description for Astronomy. I love looking at the stars!' },
-        { name: 'Astrophotography', icon: <Telescope size={32} />, description: 'Placeholder description for Astrophotography. Capturing the deep sky is amazing.' },
-        { name: 'Programming', icon: <Code size={32} />, description: 'Placeholder description for Programming. Building things with code is my passion.' },
-        { name: 'Pixel Art', icon: <Palette size={32} />, description: 'Placeholder description for Pixel Art. Creating retro-style art is so fun.' },
-        { name: 'Gaming', icon: <Gamepad2 size={32} />, description: 'Placeholder description for Gaming. RPGs, Platformers, you name it.' },
-        { name: 'Hiking', icon: <Mountain size={32} />, description: 'Placeholder description for Hiking. Exploring the great outdoors is refreshing.' },
-        { name: 'Cycling', icon: <Bike size={32} />, description: 'Placeholder description for Cycling. Feeling the wind while riding is the best.' },
-        { name: 'Anime', icon: <Tv size={32} />, description: 'Placeholder description for Anime. Massive weeb here!' },
-        { name: 'Music', icon: <Music size={32} />, description: 'Placeholder description for Music. Listening to tunes is a big part of my day.' },
+        { name: 'Astronomy', icon: <Star size={32} />, description: 'Been into starts for a while, love everything about space, with my favorite being astrophotography. My favorite mission being ESA JUICE mission' },
+        { name: 'Astrophotography', icon: <Telescope size={32} />, description: 'Same as astronomy but with photos, been at it for a while, all my photos have been taken with my phone, with favrite space objecting being The seven sisters, Pleiades' },
+        { name: 'Programming', icon: <Code size={32} />, description: 'Studied it for a while, i mostly use python but i also know html, css and javascript for web development' },
+        { name: 'Pixel Art', icon: <Palette size={32} />, description: 'Drawing pixel art is fun, doing it since i was 15 so for a while now' },
+        { name: 'Gaming', icon: <Gamepad2 size={32} />, description: 'And this one ive been for at for ages since i was maybe 4 with my first PC, love games mostly multipleyer with friends or singleplayer, playing just for fun' },
+        { name: 'Hiking', icon: <Mountain size={32} />, description: 'Walking and hiking is fun, longest ive ever hiked was 15km nonstop 30k steps, love the nature so its natural to me' },
+        { name: 'Cycling', icon: <Bike size={32} />, description: 'Same with hiking, love it, longest ive ever cycled was 45km died after, but i was worth it' },
+        { name: 'Anime', icon: <Tv size={32} />, description: 'Over 500 anime watched so yea i guess i like it' },
+        { name: 'Music', icon: <Music size={32} />, description: 'EDM, hardstyle, electronic, pop, indie, rock, upbeat, AND MY BOY AVICII ◢◤' },
     ];
 
     return (
@@ -61,6 +61,10 @@ export default function About() {
                 <a href="https://www.youtube.com/@imon1G" target="_blank" rel="noopener noreferrer" className="about-social-link youtube">
                     <Youtube size={24} />
                     <span>YouTube</span>
+                </a>
+                <a href="https://ngl.link/simon1g" target="_blank" rel="noopener noreferrer" className="about-social-link ngl">
+                    <MessageCircle size={24} />
+                    <span>NGL</span>
                 </a>
             </div>
             <p style={{

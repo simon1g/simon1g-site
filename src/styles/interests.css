@@ -116,6 +116,11 @@
     border-color: #FF0000;
 }
 
+.about-social-link.ngl:hover {
+    color: #FF3B5C;
+    border-color: #FF3B5C;
+}
+
 .about-social-link span {
     font-size: 1rem;
 }
