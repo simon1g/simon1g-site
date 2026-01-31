@@ -1,5 +1,5 @@
 import React from 'react';
-import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube } from 'lucide-react';
+import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube, Music } from 'lucide-react';
 import '../styles/interests.css';
 
 export default function About() {
@@ -14,6 +14,7 @@ export default function About() {
         { name: 'Hiking', icon: <Mountain size={32} />, description: 'Placeholder description for Hiking. Exploring the great outdoors is refreshing.' },
         { name: 'Cycling', icon: <Bike size={32} />, description: 'Placeholder description for Cycling. Feeling the wind while riding is the best.' },
         { name: 'Anime', icon: <Tv size={32} />, description: 'Placeholder description for Anime. Massive weeb here!' },
+        { name: 'Music', icon: <Music size={32} />, description: 'Placeholder description for Music. Listening to tunes is a big part of my day.' },
     ];
 
     return (
