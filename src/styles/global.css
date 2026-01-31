@@ -1,14 +1,20 @@
 /* Global CSS */
 :root {
-    /* Colors - Light Theme Default */
-    --bg-color: #ffffff;
-    --text-color: #331818;
-    --text-secondary: #7f3232;
-    --accent-color: #800000;
-    /* Maroon */
-    --accent-hover: #600000;
-    --border-color: #fad1d1;
-    --card-bg: #fff0f5;
+    /* Colors - Dark Theme Default */
+    --bg-color: #2e020d;
+    /* Deep Dark Maroon */
+    --text-color: #ffe4e6;
+    /* Rose 100 */
+    --text-secondary: #fda4af;
+    /* Rose 300 */
+    --accent-color: #be123c;
+    /* Rose 700 / Maroon */
+    --accent-hover: #9f1239;
+    /* Rose 800 */
+    --border-color: #5c0f20;
+    /* Dark Maroon Border */
+    --card-bg: #4c0519;
+    /* Rose 950 / Dark Maroon */
     --success-color: #10b981;
 
     /* Layout */
@@ -27,21 +33,15 @@
     --spacing-xl: 4rem;
 }
 
-[data-theme='dark'] {
-    --bg-color: #2e020d;
-    /* Deep Dark Maroon */
-    --text-color: #ffe4e6;
-    /* Rose 100 */
-    --text-secondary: #fda4af;
-    /* Rose 300 */
-    --accent-color: #be123c;
-    /* Rose 700 / Maroon */
-    --accent-hover: #9f1239;
-    /* Rose 800 */
-    --border-color: #5c0f20;
-    /* Dark Maroon Border */
-    --card-bg: #4c0519;
-    /* Rose 950 / Dark Maroon */
+[data-theme='light'] {
+    --bg-color: #ffffff;
+    --text-color: #331818;
+    --text-secondary: #7f3232;
+    --accent-color: #800000;
+    /* Maroon */
+    --accent-hover: #600000;
+    --border-color: #fad1d1;
+    --card-bg: #fff0f5;
 }
 
 /* Reset & Base */
