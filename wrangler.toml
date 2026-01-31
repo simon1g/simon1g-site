@@ -1,3 +1,7 @@
+name = "simon1g"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "dist"
+
 [[kv_namespaces]]
 binding = "PREMID_STORE"
 id = "1859afb6bfc445f0a1486643852d7399"
