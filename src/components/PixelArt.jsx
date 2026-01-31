@@ -7,7 +7,18 @@ export default function PixelArt() {
     const { images, loading } = useGallery('pixelart');
     const [selectedImage, setSelectedImage] = useState(null);
 
-    if (loading) return <div className="container section">Loading...</div>;
+    if (loading) {
+        return (
+            <div className="container section">
+                <h2 className="section-title">Pixel Art</h2>
+                <div className="pixel-grid">
+                    {[...Array(6)].map((_, i) => (
+                        <div key={i} className="pixel-item skeleton-card" style={{ background: 'var(--card-bg)' }}></div>
+                    ))}
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="container section">

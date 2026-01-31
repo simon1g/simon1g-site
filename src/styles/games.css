@@ -22,7 +22,8 @@
     position: relative;
     display: block;
     overflow: hidden;
-    /* Removed fixed aspect-ratio to let image define shape */
+    aspect-ratio: 2 / 3;
+    /* Typical game poster ratio */
     cursor: pointer;
     background-color: var(--card-bg);
 }

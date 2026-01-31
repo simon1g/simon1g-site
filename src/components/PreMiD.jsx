@@ -48,7 +48,16 @@ export default function PreMiD() {
         </div>
     );
 
-    if (loading) return null;
+    if (loading) return (
+        <div className="premid-container">
+            <div className="premid-content">
+                <span className="premid-label">Now listening to</span>
+                <div className="premid-offline">
+                    <span>Checking activity...</span>
+                </div>
+            </div>
+        </div>
+    );
 
     return (
         <div className="premid-container">

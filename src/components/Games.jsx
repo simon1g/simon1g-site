@@ -18,7 +18,18 @@ export default function Games() {
             });
     }, []);
 
-    if (loading) return <div className="container section">Loading games...</div>;
+    if (loading) {
+        return (
+            <div className="container section">
+                <h2 className="section-title">Games I Play</h2>
+                <div className="games-grid">
+                    {[...Array(6)].map((_, i) => (
+                        <div key={i} className="game-card skeleton-card" style={{ aspectRatio: '2/3', background: 'var(--card-bg)' }}></div>
+                    ))}
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="container section">

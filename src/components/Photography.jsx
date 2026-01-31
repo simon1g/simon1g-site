@@ -7,7 +7,18 @@ export default function Photography() {
     const { images, loading } = useGallery('pics');
     const [selectedImage, setSelectedImage] = useState(null);
 
-    if (loading) return <div className="container section">Loading...</div>;
+    if (loading) {
+        return (
+            <div className="container section">
+                <h2 className="section-title">Photography</h2>
+                <div className="photo-grid">
+                    {[...Array(6)].map((_, i) => (
+                        <div key={i} className="photo-item skeleton-card" style={{ background: 'var(--card-bg)' }}></div>
+                    ))}
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="container section">
