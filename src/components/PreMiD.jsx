@@ -54,18 +54,38 @@ export default function PreMiD() {
         <div className="premid-container">
             <div className="premid-content">
                 <span className="premid-label">Now listening to</span>
-                <div className="premid-activity">
-                    {activity.assets?.large_image ? (
-                        <img src={activity.assets.large_image} alt={activity.name} className="premid-icon" />
-                    ) : (
-                        <Music size={24} />
-                    )}
-                    <div className="premid-details">
-                        <span className="premid-name">{activity.name}</span>
-                        {activity.details && <span className="premid-state">{activity.details}</span>}
-                        {activity.state && <span className="premid-state" style={{ fontSize: '0.75rem', opacity: 0.8 }}>{activity.state}</span>}
+                {activity.details_url ? (
+                    <a
+                        href={activity.details_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="premid-activity is-clickable"
+                    >
+                        {activity.assets?.large_image ? (
+                            <img src={activity.assets.large_image} alt={activity.name} className="premid-icon" />
+                        ) : (
+                            <Music size={24} className="premid-icon-placeholder" />
+                        )}
+                        <div className="premid-details">
+                            <span className="premid-name">{activity.name}</span>
+                            {activity.details && <span className="premid-state">{activity.details}</span>}
+                            {activity.state && <span className="premid-state" style={{ fontSize: '0.75rem', opacity: 0.8 }}>{activity.state}</span>}
+                        </div>
+                    </a>
+                ) : (
+                    <div className="premid-activity">
+                        {activity.assets?.large_image ? (
+                            <img src={activity.assets.large_image} alt={activity.name} className="premid-icon" />
+                        ) : (
+                            <Music size={24} className="premid-icon-placeholder" />
+                        )}
+                        <div className="premid-details">
+                            <span className="premid-name">{activity.name}</span>
+                            {activity.details && <span className="premid-state">{activity.details}</span>}
+                            {activity.state && <span className="premid-state" style={{ fontSize: '0.75rem', opacity: 0.8 }}>{activity.state}</span>}
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </div>
     );

@@ -2,7 +2,8 @@
 .premid-container {
     background-color: var(--card-bg);
     border-bottom: 1px solid var(--border-color);
-    padding: var(--spacing-sm) 0;
+    padding: 0;
+    /* Removed vertical padding to allow image to stretch */
     width: 100%;
     margin-top: var(--navbar-height);
     font-size: 0.9rem;
@@ -18,6 +19,8 @@
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 var(--spacing-md);
+    min-height: 52px;
+    /* Define a minimum height for the bar */
 }
 
 .premid-label {
@@ -35,13 +38,34 @@
     gap: var(--spacing-sm);
     flex: 1;
     overflow: hidden;
+    height: 100%;
+}
+
+.premid-activity.is-clickable {
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-radius: 6px;
+    padding-right: var(--spacing-sm);
+}
+
+.premid-activity.is-clickable:hover {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .premid-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 4px;
+    height: 52px;
+    width: 52px;
+    border-radius: 0;
+    /* Flush edges */
     object-fit: cover;
+    flex-shrink: 0;
+}
+
+.premid-icon-placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
+    margin: 0 var(--spacing-xs);
 }
 
 .premid-details {
