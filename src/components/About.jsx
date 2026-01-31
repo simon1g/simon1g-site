@@ -37,8 +37,6 @@ export default function About() {
                     <div
                         key={item.name}
                         className={`interest-item ${activeInterest?.name === item.name ? 'active' : ''}`}
-                        onMouseEnter={() => setActiveInterest(item)}
-                        onMouseLeave={() => setActiveInterest(null)}
                         onClick={() => setActiveInterest(activeInterest?.name === item.name ? null : item)}
                     >
                         <div className="interest-header">
