@@ -9,7 +9,7 @@ import Astrophotography from './components/Astrophotography';
 import About from './components/About';
 import Games from './components/Games';
 
-const FlyingMessages = () => {
+const FooterMessage = () => {
   const messages = [
     "hello",
     "how you doing?",
@@ -35,13 +35,13 @@ const FlyingMessages = () => {
     };
 
     showNextMessage();
-    const interval = setInterval(showNextMessage, 15000); // New message every 15s
+    const interval = setInterval(showNextMessage, 10000); // Change every 10s
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="flying-messages-container">
-      <div key={key} className="flying-text">
+    <div className="footer-message-container">
+      <div key={key} className="footer-message-text">
         {currentMessage}
       </div>
     </div>
@@ -63,7 +63,7 @@ function App() {
           <Route path="/games" element={<Games />} />
         </Routes>
       </main>
-      <FlyingMessages />
+      <FooterMessage />
       <footer style={{
         textAlign: 'center',
         padding: '2rem',
