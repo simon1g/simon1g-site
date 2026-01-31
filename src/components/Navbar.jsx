@@ -1,0 +1,68 @@
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { Menu, X, Twitter } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
+import '../styles/navbar.css';
+
+export default function Navbar() {
+    const [isOpen, setIsOpen] = useState(false);
+    const [isOnline, setIsOnline] = useState(false); // In a real app, fetch this status
+
+    const toggleMenu = () => setIsOpen(!isOpen);
+
+    const navItems = [
+        { name: 'Home', path: '/' },
+        { name: 'Pixel Art', path: '/pixelart' },
+        { name: 'Photography', path: '/photography' },
+        { name: 'Astrophotography', path: '/astropics' }, // URL naming convention check? User said /astropics in assets, I'll use /astrophotography for route
+        { name: 'About', path: '/about' },
+        { name: 'Games', path: '/games' },
+    ];
+
+    return (
+        <nav className="navbar">
+            <div className="navbar-container">
+                <NavLink to="/" className="brand" onClick={() => setIsOpen(false)}>
+                    simon1g
+                </NavLink>
+
+                <div className="hamburger" onClick={toggleMenu}>
+                    {isOpen ? <X size={24} /> : <Menu size={24} />}
+                </div>
+
+                <div className={`nav-links ${isOpen ? 'open' : ''}`}>
+                    {navItems.map((item) => (
+                        <NavLink
+                            key={item.name}
+                            to={item.path}
+                            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                            onClick={() => setIsOpen(false)}
+                        >
+                            {item.name}
+                        </NavLink>
+                    ))}
+
+                    <div className="nav-actions">
+                        <span
+                            className={`status-indicator ${isOnline ? 'status-online' : ''}`}
+                            title={isOnline ? "Online" : "Offline"}
+                            aria-label={isOnline ? "Status: Online" : "Status: Offline"}
+                        />
+
+                        <a
+                            href="https://twitter.com/simon1g_"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="social-link"
+                            aria-label="Twitter Profile"
+                        >
+                            <Twitter size={20} />
+                        </a>
+
+                        <ThemeToggle />
+                    </div>
+                </div>
+            </div>
+        </nav>
+    );
+}

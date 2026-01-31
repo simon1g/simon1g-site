@@ -1,0 +1,43 @@
+/* Pixel Art Styles */
+.pixel-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.pixel-grid {
+    display: grid;
+    /* Updated to match games grid sizing */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .pixel-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+.pixel-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+    background-color: var(--card-bg);
+}
+
+.pixel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    image-rendering: pixelated;
+    /* Crisp edges */
+    image-rendering: crisp-edges;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pixel-item:hover .pixel-img {
+    transform: scale(1.1);
+}
+
+/* Ensure no layout shift, the overflow hidden on parent handles it */

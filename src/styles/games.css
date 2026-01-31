@@ -1,0 +1,45 @@
+/* Games Styles */
+.games-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.games-grid {
+    display: grid;
+    /* Increased minimum width for bigger images */
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .games-grid {
+        /* Even larger on desktop */
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+.game-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    /* Removed fixed aspect-ratio to let image define shape */
+    cursor: pointer;
+    background-color: var(--card-bg);
+}
+
+.game-icon {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.game-card:hover .game-icon {
+    transform: scale(1.05);
+    /* Slightly reduced scale effect for larger images to keep it subtle */
+}
+
+.game-card:focus-visible {
+    outline: 2px solid var(--accent-color);
+    z-index: 10;
+}

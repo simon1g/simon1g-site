@@ -1,0 +1,72 @@
+/* PreMiD Activity Styles */
+.premid-container {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-sm) 0;
+    width: 100%;
+    margin-top: var(--navbar-height);
+    font-size: 0.9rem;
+    position: sticky;
+    top: var(--navbar-height);
+    z-index: 900;
+}
+
+.premid-content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.premid-label {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+}
+
+.premid-activity {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex: 1;
+    overflow: hidden;
+}
+
+.premid-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.premid-details {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.premid-name {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.premid-state {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.premid-offline {
+    font-style: italic;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}

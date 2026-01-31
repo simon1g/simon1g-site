@@ -1,0 +1,142 @@
+[
+    {
+        "name": "Foxhole",
+        "icon": "/games/Foxhole.png",
+        "url": "https://store.steampowered.com/app/505460/Foxhole/"
+    },
+    {
+        "name": "Minecraft",
+        "icon": "/games/Minecraft.png",
+        "url": "https://www.minecraft.net/"
+    },
+    {
+        "name": "Counter-Strike 2",
+        "icon": "/games/Counter-Strike 2.png",
+        "url": "https://store.steampowered.com/app/730/CounterStrike_2/"
+    },
+    {
+        "name": "Terraria",
+        "icon": "/games/Terraria.png",
+        "url": "https://store.steampowered.com/app/105600/Terraria/"
+    },
+    {
+        "name": "Deep Rock Galactic",
+        "icon": "/games/Deep Rock Galactic.png",
+        "url": "https://store.steampowered.com/app/548430/Deep_Rock_Galactic/"
+    },
+    {
+        "name": "Garry's Mod",
+        "icon": "/games/Garry's Mod.png",
+        "url": "https://store.steampowered.com/app/4000/Garrys_Mod/"
+    },
+    {
+        "name": "Barotrauma",
+        "icon": "/games/Barotrauma.png",
+        "url": "https://store.steampowered.com/app/602960/Barotrauma/"
+    },
+    {
+        "name": "Sid Meier’s Civilization VI",
+        "icon": "/games/Sid Meier’s Civilization VI.jpg",
+        "url": "https://store.steampowered.com/app/289070/Sid_Meiers_Civilization_VI/"
+    },
+    {
+        "name": "HELLDIVERS 2",
+        "icon": "/games/HELLDIVERS 2.jpg",
+        "url": "https://store.steampowered.com/app/553850/HELLDIVERS_2/"
+    },
+    {
+        "name": "Project Zomboid",
+        "icon": "/games/Project Zomboid.png",
+        "url": "https://store.steampowered.com/app/108600/Project_Zomboid/"
+    },
+    {
+        "name": "Starbound",
+        "icon": "/games/Starbound.png",
+        "url": "https://store.steampowered.com/app/211820/Starbound/"
+    },
+    {
+        "name": "Left 4 Dead 2",
+        "icon": "/games/Left 4 Dead 2.png",
+        "url": "https://store.steampowered.com/app/550/Left_4_Dead_2/"
+    },
+    {
+        "name": "Deadlock",
+        "icon": "/games/Deadlock.png",
+        "url": "https://store.steampowered.com/app/1422450/Deadlock/"
+    },
+    {
+        "name": "Sniper Elite 5",
+        "icon": "/games/Sniper Elite 5.png",
+        "url": "https://store.steampowered.com/app/1029690/Sniper_Elite_5/"
+    },
+    {
+        "name": "Sniper Elite 4",
+        "icon": "/games/Sniper Elite 4.png",
+        "url": "https://store.steampowered.com/app/312660/Sniper_Elite_4/"
+    },
+    {
+        "name": "WEBFISHING",
+        "icon": "/games/WEBFISHING.jpg",
+        "url": "https://store.steampowered.com/app/3146520/WEBFISHING/"
+    },
+    {
+        "name": "Baba Is You",
+        "icon": "/games/Baba Is You.png",
+        "url": "https://store.steampowered.com/app/736260/Baba_Is_You/"
+    },
+    {
+        "name": "The Long Drive",
+        "icon": "/games/The Long Drive.jpg",
+        "url": "https://store.steampowered.com/app/1017180/The_Long_Drive/"
+    },
+    {
+        "name": "The Talos Principle",
+        "icon": "/games/The Talos Principle.png",
+        "url": "https://store.steampowered.com/app/257510/The_Talos_Principle/"
+    },
+    {
+        "name": "Nuclear Nightmare",
+        "icon": "/games/Nuclear Nightmare.jpg",
+        "url": "https://store.steampowered.com/app/2010240/Nuclear_Nightmare/"
+    },
+    {
+        "name": "PEAK",
+        "icon": "/games/PEAK.png",
+        "url": "https://store.steampowered.com/app/2571210/PEAK_The_Game/"
+    },
+    {
+        "name": "Slay the Spire",
+        "icon": "/games/Slay the Spire.png",
+        "url": "https://store.steampowered.com/app/646570/Slay_the_Spire/"
+    },
+    {
+        "name": "Honkai: Star Rail",
+        "icon": "/games/Honkai Star Rail.png",
+        "url": "https://hsr.hoyoverse.com/"
+    },
+    {
+        "name": "Enter the Gungeon",
+        "icon": "/games/Enter the Gungeon.png",
+        "url": "https://store.steampowered.com/app/311690/Enter_the_Gungeon/"
+    },
+    {
+        "name": "Heroes of Hammerwatch II",
+        "icon": "/games/Heroes of Hammerwatch II.jpg",
+        "url": "https://store.steampowered.com/app/1533690/Hammerwatch_II/"
+    },
+    {
+        "name": "Portal 2",
+        "icon": "/games/Portal 2.png",
+        "url": "https://store.steampowered.com/app/620/Portal_2/"
+    },
+    {
+        "name": "Sea of Thieves",
+        "icon": "/games/Sea of Thieves.png",
+        "url": "https://store.steampowered.com/app/1172620/Sea_of_Thieves_2024_Edition/"
+    },
+    {
+        "name": "The Binding of Isaac",
+        "icon": "/games/The Binding of Isaac.png",
+        "url": "https://store.steampowered.com/app/250900/The_Binding_of_Isaac_Rebirth/"
+    }
+]
