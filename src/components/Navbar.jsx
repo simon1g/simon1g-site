@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, X, Twitter } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import '../styles/navbar.css';
 
@@ -68,15 +68,7 @@ export default function Navbar() {
                             aria-label={isOnline ? "Status: Online" : "Status: Offline"}
                         />
 
-                        <a
-                            href="https://twitter.com/simon1g_"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="social-link"
-                            aria-label="Twitter Profile"
-                        >
-                            <Twitter size={20} />
-                        </a>
+
 
                         <ThemeToggle />
                     </div>

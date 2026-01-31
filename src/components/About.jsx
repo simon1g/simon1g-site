@@ -1,17 +1,19 @@
 import React from 'react';
-import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv } from 'lucide-react';
+import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube } from 'lucide-react';
 import '../styles/interests.css';
 
 export default function About() {
+    const [activeInterest, setActiveInterest] = React.useState(null);
+
     const interests = [
-        { name: 'Astronomy', icon: <Star size={32} /> },
-        { name: 'Astrophotography', icon: <Telescope size={32} /> },
-        { name: 'Programming', icon: <Code size={32} /> },
-        { name: 'Pixel Art', icon: <Palette size={32} /> },
-        { name: 'Gaming', icon: <Gamepad2 size={32} /> },
-        { name: 'Hiking', icon: <Mountain size={32} /> },
-        { name: 'Cycling', icon: <Bike size={32} /> },
-        { name: 'Anime', icon: <Tv size={32} /> },
+        { name: 'Astronomy', icon: <Star size={32} />, description: 'Placeholder description for Astronomy. I love looking at the stars!' },
+        { name: 'Astrophotography', icon: <Telescope size={32} />, description: 'Placeholder description for Astrophotography. Capturing the deep sky is amazing.' },
+        { name: 'Programming', icon: <Code size={32} />, description: 'Placeholder description for Programming. Building things with code is my passion.' },
+        { name: 'Pixel Art', icon: <Palette size={32} />, description: 'Placeholder description for Pixel Art. Creating retro-style art is so fun.' },
+        { name: 'Gaming', icon: <Gamepad2 size={32} />, description: 'Placeholder description for Gaming. RPGs, Platformers, you name it.' },
+        { name: 'Hiking', icon: <Mountain size={32} />, description: 'Placeholder description for Hiking. Exploring the great outdoors is refreshing.' },
+        { name: 'Cycling', icon: <Bike size={32} />, description: 'Placeholder description for Cycling. Feeling the wind while riding is the best.' },
+        { name: 'Anime', icon: <Tv size={32} />, description: 'Placeholder description for Anime. Massive weeb here!' },
     ];
 
     return (
@@ -31,13 +33,34 @@ export default function About() {
 
             <div className="interests-container">
                 {interests.map((item) => (
-                    <div key={item.name} className="interest-item">
+                    <div
+                        key={item.name}
+                        className={`interest-item ${activeInterest?.name === item.name ? 'active' : ''}`}
+                        onMouseEnter={() => setActiveInterest(item)}
+                        onMouseLeave={() => setActiveInterest(null)}
+                        onClick={() => setActiveInterest(activeInterest?.name === item.name ? null : item)}
+                    >
                         <div className="interest-icon">
                             {item.icon}
                         </div>
                         <span className="interest-name">{item.name}</span>
                     </div>
                 ))}
+            </div>
+
+            <div className={`interest-description-box ${activeInterest ? 'visible' : ''}`}>
+                <p>{activeInterest?.description || ''}</p>
+            </div>
+
+            <div className="about-socials">
+                <a href="https://twitter.com/simon1g_" target="_blank" rel="noopener noreferrer" className="about-social-link twitter">
+                    <Twitter size={24} />
+                    <span>Twitter</span>
+                </a>
+                <a href="https://www.youtube.com/@imon1G" target="_blank" rel="noopener noreferrer" className="about-social-link youtube">
+                    <Youtube size={24} />
+                    <span>YouTube</span>
+                </a>
             </div>
             <p style={{
                 textAlign: 'center',
