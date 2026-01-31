@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Music, Activity } from 'lucide-react';
 import '../styles/premid.css';
 
-// Endpoint configuration
-// In production, user should set this to their Cloudflare Worker URL
-// that caches/forwards the PreMiD POST data.
-const API_ENDPOINT = 'https://api.yourdomain.com/premid'; // Placeholder
+const API_ENDPOINT = 'https://simon1g-site.pages.dev/api/premid';
 
 export default function PreMiD() {
     const [data, setData] = useState({ active_activity: null });
@@ -16,31 +13,13 @@ export default function PreMiD() {
 
         const fetchData = async () => {
             try {
-                // Mock data fetch logic (replace with real fetch in production)
-                // const res = await fetch(API_ENDPOINT);
-                // if (res.ok) {
-                //   const jsonData = await res.json();
-                //   setData(jsonData); // Expects { active_activity: { ... } }
-                // } else { ... }
-
-                // Mocking the structure provided by User
-                // Uncomment to test visualization:
-                /*
-                setData({
-                  active_activity: {
-                    name: "YouTube",
-                    details: "Watching a video",
-                    state: "Never Gonna Give You Up",
-                    assets: {
-                      large_image: "https://placehold.co/64x64/png",
-                      small_image: ""
-                    }
-                  }
-                });
-                */
-
-                setData({ active_activity: null });
-
+                const res = await fetch(API_ENDPOINT);
+                if (res.ok) {
+                    const jsonData = await res.json();
+                    setData(jsonData);
+                } else {
+                    setData({ active_activity: null });
+                }
             } catch (error) {
                 console.error("PreMiD fetch error", error);
                 setData({ active_activity: null });
