@@ -45,12 +45,24 @@ export default function About() {
                             </div>
                             <span className="interest-name">{item.name}</span>
                         </div>
-
-                        <div className={`interest-inline-description ${activeInterest?.name === item.name ? 'visible' : ''}`}>
-                            <p>{item.description}</p>
-                        </div>
                     </div>
                 ))}
+            </div>
+
+            <div className={`interest-detail-view ${activeInterest ? 'visible' : ''}`}>
+                {activeInterest ? (
+                    <div className="detail-content">
+                        <div className="detail-header">
+                            {activeInterest.icon}
+                            <h3>{activeInterest.name}</h3>
+                        </div>
+                        <p>{activeInterest.description}</p>
+                    </div>
+                ) : (
+                    <div className="detail-placeholder">
+                        <p>Click on an interest to learn more!</p>
+                    </div>
+                )}
             </div>
 
 

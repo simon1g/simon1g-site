@@ -32,7 +32,7 @@ function App() {
         borderTop: '1px solid var(--border-color)',
         marginTop: '2rem'
       }}>
-        © {new Date().getFullYear()} simon1g. Built with React.
+        © {new Date().getFullYear()} simon1g. Built with React. And some love hehehehe ❤️
       </footer>
     </>
   );
