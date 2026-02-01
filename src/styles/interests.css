@@ -220,24 +220,13 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.social-icon {
-    width: 24px;
-    height: 24px;
-    display: inline-block;
-    background-color: var(--text-color);
-    mask-size: contain;
-    mask-repeat: no-repeat;
-    mask-position: center;
-    -webkit-mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    transition: all 0.3s ease;
-    opacity: 0.8;
+/* Brand icons are now inline SVGs and inherit parent color */
+.about-social-link svg {
+    transition: transform 0.3s ease;
 }
 
-.about-social-link:hover .social-icon {
-    background-color: currentColor;
-    opacity: 1;
+.about-social-link:hover svg {
+    transform: scale(1.1);
 }
 
 .about-social-link.twitter:hover {
