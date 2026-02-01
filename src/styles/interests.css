@@ -220,6 +220,23 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+.social-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: filter 0.3s ease;
+}
+
+/* Make social icons white/gray by default to match lucide icons */
+.social-icon {
+    filter: invert(0.8);
+}
+
+.about-social-link:hover .social-icon {
+    filter: none;
+    /* Show original colors on hover */
+}
+
 .about-social-link.twitter:hover {
     color: #1DA1F2;
     border-color: #1DA1F2;

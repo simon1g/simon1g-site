@@ -3,23 +3,10 @@ import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, 
 import '../styles/interests.css';
 import nglLogo from '../assets/ngl-removebg-preview.png';
 
-const RedditIcon = ({ size = 24 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.056 1.597.04.21.06.427.06.646 0 2.311-2.73 4.184-6.1 4.184-3.37 0-6.1-1.873-6.1-4.184 0-.215.02-.426.059-.633A1.751 1.751 0 0 1 6.33 13.5c0-.968.786-1.754 1.754-1.754.463 0 .875.18 1.179.471 1.183-.834 2.806-1.388 4.581-1.47l.835-3.929c.04-.194.232-.319.42-.269l2.912.612c.252-.288.62-.464 1.028-.464zm-6.91 8.125c-.71 0-1.28.57-1.28 1.28 0 .71.57 1.28 1.28 1.28s1.28-.57 1.28-1.28c0-.71-.57-1.28-1.28-1.28zm5.8 0c-.71 0-1.28.57-1.28 1.28 0 .71.57 1.28 1.28 1.28s1.28-.57 1.28-1.28c0-.71-.57-1.28-1.28-1.28zm-5.8 2.302c-.08 0-.142.062-.142.142 0 .584.974 1.059 2.164 1.059 1.19 0 2.164-.475 2.164-1.059 0-.08-.063-.142-.143-.142H10.1z" />
-    </svg>
-);
-
-const SteamIcon = ({ size = 24 }) => (
-    <svg width={size} height={size} viewBox="0 0 16 16" fill="currentColor">
-        <path d="M.329 10.333A8.01 8.01 0 0 0 7.99 16C12.414 16 16 12.418 16 8s-3.586-8-8.009-8A8.006 8.006 0 0 0 0 7.468l.003.006 4.304 1.769A2.2 2.2 0 0 1 5.62 8.88l1.96-2.844-.001-.04a3.046 3.046 0 0 1 3.042-3.043 3.046 3.046 0 0 1 3.042 3.043 3.047 3.047 0 0 1-3.111 3.044l-2.804 2a2.223 2.223 0 0 1-3.075 2.11 2.22 2.22 0 0 1-1.312-1.568L.33 10.333Z" />
-    </svg>
-);
-
-const SoundCloudIcon = ({ size = 24 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-        <path d="M0 15a1.5 1.5 0 0 1 1.5-1.5v3A1.5 1.5 0 0 1 0 15Zm2.5-.5a1.5 1.5 0 0 1 1.5-1.5v4.5a1.5 1.5 0 0 1-1.5-1.5v-1.5Zm2.5-1a1.5 1.5 0 0 1 1.5-1.5v5.5a1.5 1.5 0 0 1-1.5-1.5v-2.5Zm2.5-1.5a1.5 1.5 0 0 1 1.5-1.5v7.5a1.5 1.5 0 0 1-1.5-1.5v-4.5Zm2.5-3.5a1.5 1.5 0 0 1 1.5-1.5v11.5a1.5 1.5 0 0 1-1.5-1.5V7.5Zm2.5-2.5a1.5 1.5 0 0 1 1.5-1.5v15.5a1.5 1.5 0 0 1-1.5-1.5V5Zm2.5-1.5a1.5 1.5 0 0 1 1.5-1.5v18.5a1.5 1.5 0 0 1-1.5-1.5V3.5Zm2.5 5h1a4 4 0 0 1 4 4v.5a4 4 0 0 1-4 4h-1v-8.5Z" />
-    </svg>
-);
+import nglLogo from '../assets/ngl-removebg-preview.png';
+import steamLogo from '../assets/steam-svgrepo-com.svg';
+import soundcloudLogo from '../assets/soundcloud-164-svgrepo-com.svg';
+import redditLogo from '../assets/reddit-svgrepo-com.svg';
 
 export default function About() {
     const [activeInterest, setActiveInterest] = React.useState(null);
@@ -100,19 +87,19 @@ export default function About() {
                     <span>YouTube</span>
                 </a>
                 <a href="https://ngl.link/simon1g" target="_blank" rel="noopener noreferrer" className="about-social-link ngl">
-                    <img src={nglLogo} alt="NGL" style={{ width: '24px', height: '24px', borderRadius: '4px' }} />
+                    <img src={nglLogo} alt="NGL" className="social-icon" />
                     <span>NGL</span>
                 </a>
                 <a href="https://soundcloud.com/simon1g-xyz" target="_blank" rel="noopener noreferrer" className="about-social-link soundcloud">
-                    <SoundCloudIcon size={24} />
+                    <img src={soundcloudLogo} alt="SoundCloud" className="social-icon" />
                     <span>SoundCloud</span>
                 </a>
                 <a href="https://www.reddit.com/user/_ssSimon_/" target="_blank" rel="noopener noreferrer" className="about-social-link reddit">
-                    <RedditIcon size={24} />
+                    <img src={redditLogo} alt="Reddit" className="social-icon" />
                     <span>Reddit</span>
                 </a>
                 <a href="https://steamcommunity.com/id/simon1g/" target="_blank" rel="noopener noreferrer" className="about-social-link steam">
-                    <SteamIcon size={24} />
+                    <img src={steamLogo} alt="Steam" className="social-icon" />
                     <span>Steam</span>
                 </a>
             </div>
