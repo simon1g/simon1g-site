@@ -21,7 +21,11 @@ const FooterMessage = () => {
     "keep being you",
     "smile it looks good on you",
     "u're doing great!",
-    "take a shower ok?"
+    "take a shower ok?",
+    "i love you",
+    "lowkey need a gf",
+    "still single",
+    "you are enough",
   ];
 
   const [currentMessage, setCurrentMessage] = React.useState("");
