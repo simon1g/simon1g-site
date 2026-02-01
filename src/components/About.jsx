@@ -1,6 +1,7 @@
 import React from 'react';
-import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube, Music, MessageCircle, PawPrint, Cloud } from 'lucide-react';
+import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube, Music, PawPrint } from 'lucide-react';
 import '../styles/interests.css';
+import nglLogo from '../assets/ngl-removebg-preview.png';
 
 const RedditIcon = ({ size = 24 }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
@@ -11,6 +12,12 @@ const RedditIcon = ({ size = 24 }) => (
 const SteamIcon = ({ size = 24 }) => (
     <svg width={size} height={size} viewBox="0 0 16 16" fill="currentColor">
         <path d="M.329 10.333A8.01 8.01 0 0 0 7.99 16C12.414 16 16 12.418 16 8s-3.586-8-8.009-8A8.006 8.006 0 0 0 0 7.468l.003.006 4.304 1.769A2.2 2.2 0 0 1 5.62 8.88l1.96-2.844-.001-.04a3.046 3.046 0 0 1 3.042-3.043 3.046 3.046 0 0 1 3.042 3.043 3.047 3.047 0 0 1-3.111 3.044l-2.804 2a2.223 2.223 0 0 1-3.075 2.11 2.22 2.22 0 0 1-1.312-1.568L.33 10.333Z" />
+    </svg>
+);
+
+const SoundCloudIcon = ({ size = 24 }) => (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+        <path d="M0 15a1.5 1.5 0 0 1 1.5-1.5v3A1.5 1.5 0 0 1 0 15Zm2.5-.5a1.5 1.5 0 0 1 1.5-1.5v4.5a1.5 1.5 0 0 1-1.5-1.5v-1.5Zm2.5-1a1.5 1.5 0 0 1 1.5-1.5v5.5a1.5 1.5 0 0 1-1.5-1.5v-2.5Zm2.5-1.5a1.5 1.5 0 0 1 1.5-1.5v7.5a1.5 1.5 0 0 1-1.5-1.5v-4.5Zm2.5-3.5a1.5 1.5 0 0 1 1.5-1.5v11.5a1.5 1.5 0 0 1-1.5-1.5V7.5Zm2.5-2.5a1.5 1.5 0 0 1 1.5-1.5v15.5a1.5 1.5 0 0 1-1.5-1.5V5Zm2.5-1.5a1.5 1.5 0 0 1 1.5-1.5v18.5a1.5 1.5 0 0 1-1.5-1.5V3.5Zm2.5 5h1a4 4 0 0 1 4 4v.5a4 4 0 0 1-4 4h-1v-8.5Z" />
     </svg>
 );
 
@@ -93,11 +100,11 @@ export default function About() {
                     <span>YouTube</span>
                 </a>
                 <a href="https://ngl.link/simon1g" target="_blank" rel="noopener noreferrer" className="about-social-link ngl">
-                    <MessageCircle size={24} />
+                    <img src={nglLogo} alt="NGL" style={{ width: '24px', height: '24px', borderRadius: '4px' }} />
                     <span>NGL</span>
                 </a>
                 <a href="https://soundcloud.com/simon1g-xyz" target="_blank" rel="noopener noreferrer" className="about-social-link soundcloud">
-                    <Cloud size={24} />
+                    <SoundCloudIcon size={24} />
                     <span>SoundCloud</span>
                 </a>
                 <a href="https://www.reddit.com/user/_ssSimon_/" target="_blank" rel="noopener noreferrer" className="about-social-link reddit">
