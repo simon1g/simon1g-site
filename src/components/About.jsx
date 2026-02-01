@@ -36,7 +36,7 @@ export default function About() {
         { name: 'Anime', icon: <Tv size={32} />, description: 'Over 500 anime watched so yea i guess i like it' },
         { name: 'Music', icon: <Music size={32} />, description: 'EDM, hardstyle, electronic, pop, indie, rock, upbeat, AND MY BOY AVICII ◢◤' },
         { name: 'Animals', icon: <PawPrint size={32} />, description: 'I fuck heavy with all things alive. My favorites include: guinea pigs, hamsters, seals, sea lions, sunfish, ducks, frogs, cats, and dogs. (and more)' },
-        { name: 'Cooking', icon: <Utensils size={32} />, description: "i aint gordon ramsey but i know my way within a kitechen, it's realaxing and fun, i wish i knew how to bake too maybe one day" },
+        { name: 'Cooking', icon: <Utensils size={32} />, description: "I ain't Gordon Ramsay but I know my way within a kitchen, it's relaxing and fun, I wish I knew how to bake too maybe one day" },
     ];
 
     return (
