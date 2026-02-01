@@ -34,7 +34,7 @@ export default function About() {
         { name: 'Hiking', icon: <Mountain size={32} />, description: 'Walking and hiking are fun, longest ive ever hiked was 15km nonstop 30k steps, love the nature so its natural to me' },
         { name: 'Cycling', icon: <Bike size={32} />, description: 'Same with hiking, love it, longest ive ever cycled was 45km died after, but i was worth it' },
         { name: 'Anime', icon: <Tv size={32} />, description: 'Over 500 anime watched so yea i guess i like it' },
-        { name: 'Music', icon: <Music size={32} />, description: 'EDM, hardstyle, electronic, pop, indie, rock, upbeat, AND MY BOY AVICII ◢◤' },
+        { name: 'Music', icon: <Music size={32} />, description: 'EDM, hardstyle, electronic, pop, indie, rock, upbeat, AND MY BOY AVICII ◢◤ also i have like 30 albums on CDs so yeah' },
         { name: 'Animals', icon: <PawPrint size={32} />, description: 'I fuck heavy with all things alive. My favorites include: guinea pigs, hamsters, seals, sea lions, sunfish, ducks, frogs, cats, and dogs. (and more)' },
         { name: 'Cooking', icon: <Utensils size={32} />, description: "I ain't gordon ramsay but i know my way within a kitchen, it's relaxing and fun, i wish i knew how to bake too maybe one day" },
     ];
