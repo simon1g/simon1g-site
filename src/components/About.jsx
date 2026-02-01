@@ -1,5 +1,5 @@
 import React from 'react';
-import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube, Music, MessageCircle } from 'lucide-react';
+import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube, Music, MessageCircle, PawPrint } from 'lucide-react';
 import '../styles/interests.css';
 
 export default function About() {
@@ -15,6 +15,7 @@ export default function About() {
         { name: 'Cycling', icon: <Bike size={32} />, description: 'Same with hiking, love it, longest ive ever cycled was 45km died after, but i was worth it' },
         { name: 'Anime', icon: <Tv size={32} />, description: 'Over 500 anime watched so yea i guess i like it' },
         { name: 'Music', icon: <Music size={32} />, description: 'EDM, hardstyle, electronic, pop, indie, rock, upbeat, AND MY BOY AVICII ◢◤' },
+        { name: 'Animals', icon: <PawPrint size={32} />, description: 'I fuck heavy with all things alive. My favorites include: guinea pigs, hamsters, seals, sea lions, sunfish, cats, and dogs. (and more)' },
     ];
 
     return (
@@ -82,6 +83,10 @@ export default function About() {
                 <a href="https://ngl.link/simon1g" target="_blank" rel="noopener noreferrer" className="about-social-link ngl">
                     <MessageCircle size={24} />
                     <span>NGL</span>
+                </a>
+                <a href="https://soundcloud.com/simon1g-xyz" target="_blank" rel="noopener noreferrer" className="about-social-link soundcloud">
+                    <Music size={24} />
+                    <span>SoundCloud</span>
                 </a>
             </div>
             <p style={{

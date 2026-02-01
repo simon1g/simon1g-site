@@ -234,3 +234,8 @@
     color: #FF3B5C;
     border-color: #FF3B5C;
 }
+
+.about-social-link.soundcloud:hover {
+    color: #FF5500;
+    border-color: #FF5500;
+}
