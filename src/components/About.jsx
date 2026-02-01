@@ -85,19 +85,19 @@ export default function About() {
                     <span>YouTube</span>
                 </a>
                 <a href="https://ngl.link/simon1g" target="_blank" rel="noopener noreferrer" className="about-social-link ngl">
-                    <img src={nglLogo} alt="NGL" className="social-icon" />
+                    <span className="social-icon" style={{ maskImage: `url(${nglLogo})`, WebkitMaskImage: `url(${nglLogo})` }} />
                     <span>NGL</span>
                 </a>
                 <a href="https://soundcloud.com/simon1g-xyz" target="_blank" rel="noopener noreferrer" className="about-social-link soundcloud">
-                    <img src={soundcloudLogo} alt="SoundCloud" className="social-icon" />
+                    <span className="social-icon" style={{ maskImage: `url(${soundcloudLogo})`, WebkitMaskImage: `url(${soundcloudLogo})` }} />
                     <span>SoundCloud</span>
                 </a>
                 <a href="https://www.reddit.com/user/_ssSimon_/" target="_blank" rel="noopener noreferrer" className="about-social-link reddit">
-                    <img src={redditLogo} alt="Reddit" className="social-icon" />
+                    <span className="social-icon" style={{ maskImage: `url(${redditLogo})`, WebkitMaskImage: `url(${redditLogo})` }} />
                     <span>Reddit</span>
                 </a>
                 <a href="https://steamcommunity.com/id/simon1g/" target="_blank" rel="noopener noreferrer" className="about-social-link steam">
-                    <img src={steamLogo} alt="Steam" className="social-icon" />
+                    <span className="social-icon" style={{ maskImage: `url(${steamLogo})`, WebkitMaskImage: `url(${steamLogo})` }} />
                     <span>Steam</span>
                 </a>
             </div>

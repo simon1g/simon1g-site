@@ -223,18 +223,21 @@
 .social-icon {
     width: 24px;
     height: 24px;
-    object-fit: contain;
-    transition: filter 0.3s ease;
-}
-
-/* Make social icons white/gray by default to match lucide icons */
-.social-icon {
-    filter: invert(0.8);
+    display: inline-block;
+    background-color: var(--text-color);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    transition: all 0.3s ease;
+    opacity: 0.8;
 }
 
 .about-social-link:hover .social-icon {
-    filter: none;
-    /* Show original colors on hover */
+    background-color: currentColor;
+    opacity: 1;
 }
 
 .about-social-link.twitter:hover {
