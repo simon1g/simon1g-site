@@ -98,7 +98,7 @@ export default function About() {
                 lineHeight: '1.6',
                 marginTop: '30px'
             }}>
-                Also im an ambivert and i have level 1 autism, suffer from anxiety ¯\_(ツ)_/¯ it is what it is, im a short king of 174cm or 5'7 american tall. Spend half of my time outside, hiking, cycling, walking, stargazing and the other half inside mostly, gaming, sometimes programming or drawing or just being sad or happy. I'm also a massive weeb soooo
+                Also im an ambivert and i have level 1 autism so i may be a bit stiff sometimes, suffer from anxiety ¯\_(ツ)_/¯ it is what it is, im a short king of 174cm or 5'7 american tall. Spend half of my time outside, hiking, cycling, walking, stargazing and the other half inside mostly, gaming, sometimes programming or drawing or just being sad or happy. I'm also a massive weeb soooo, also favorite color being maroon (if it wasnt obvious enough), and and i wish i had a vtuber girlfriend but beggers cant be choosers
             </p>
         </div>
     );
