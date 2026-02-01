@@ -94,7 +94,14 @@ export default function About() {
                 ))}
             </div>
 
-            <p>
+            <p style={{
+                textAlign: 'center',
+                maxWidth: '700px',
+                margin: '0 auto 3rem auto',
+                fontSize: '1.2rem',
+                color: 'var(--text-secondary)',
+                lineHeight: '1.6'
+            }}>
                 Links to my socials:
             </p>
 
