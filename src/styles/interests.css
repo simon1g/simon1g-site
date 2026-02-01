@@ -121,6 +121,20 @@
         max-width: 280px;
         justify-content: center;
     }
+
+    .mobile-hint {
+        display: block !important;
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+        font-style: italic;
+        opacity: 0.8;
+    }
+}
+
+.mobile-hint {
+    display: none;
 }
 
 /* Shared UI Elements */

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv } from 'lucide-react';
+import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Utensils } from 'lucide-react';
 import '../styles/interests.css';
 
 export default function Interests() {
@@ -12,6 +12,7 @@ export default function Interests() {
         { name: 'Hiking', icon: <Mountain size={32} /> },
         { name: 'Cycling', icon: <Bike size={32} /> },
         { name: 'Anime', icon: <Tv size={32} /> },
+        { name: 'Cooking', icon: <Utensils size={32} /> },
     ];
 
     return (

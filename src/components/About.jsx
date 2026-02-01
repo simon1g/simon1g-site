@@ -1,6 +1,5 @@
 import React from 'react';
-import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube, Music, PawPrint, Cloud } from 'lucide-react';
-import '../styles/interests.css';
+import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube, Music, PawPrint, Cloud, Utensils } from 'lucide-react';
 import '../styles/interests.css';
 
 const NGLIcon = ({ size = 24 }) => (
@@ -32,11 +31,12 @@ export default function About() {
         { name: 'Programming', icon: <Code size={32} />, description: 'Studied it for a while, i mostly use python but i also know html, css and javascript for web development' },
         { name: 'Pixel Art', icon: <Palette size={32} />, description: 'Drawing pixel art is fun, doing it since i was 15 so for a while now' },
         { name: 'Gaming', icon: <Gamepad2 size={32} />, description: 'And this one ive been for at for ages since i was maybe 4 with my first PC, love games mostly multipleyer with friends or singleplayer, playing just for fun' },
-        { name: 'Hiking', icon: <Mountain size={32} />, description: 'Walking and hiking is fun, longest ive ever hiked was 15km nonstop 30k steps, love the nature so its natural to me' },
+        { name: 'Hiking', icon: <Mountain size={32} />, description: 'Walking and hiking are fun, longest ive ever hiked was 15km nonstop 30k steps, love the nature so its natural to me' },
         { name: 'Cycling', icon: <Bike size={32} />, description: 'Same with hiking, love it, longest ive ever cycled was 45km died after, but i was worth it' },
         { name: 'Anime', icon: <Tv size={32} />, description: 'Over 500 anime watched so yea i guess i like it' },
         { name: 'Music', icon: <Music size={32} />, description: 'EDM, hardstyle, electronic, pop, indie, rock, upbeat, AND MY BOY AVICII ◢◤' },
         { name: 'Animals', icon: <PawPrint size={32} />, description: 'I fuck heavy with all things alive. My favorites include: guinea pigs, hamsters, seals, sea lions, sunfish, ducks, frogs, cats, and dogs. (and more)' },
+        { name: 'Cooking', icon: <Utensils size={32} />, description: "i aint gordon ramsey but i know my way within a kitechen, it's realaxing and fun, i wish i knew how to bake too maybe one day" },
     ];
 
     return (
@@ -53,6 +53,10 @@ export default function About() {
             }}>
                 Hello again, im a cool guy (i think) who likes shit ton of things, i'm always happy and open to try new things, other then that i... mhhhh... idk...
             </p>
+
+            <div className="mobile-hint">
+                <p>click to expand the intrest silly</p>
+            </div>
 
             <div className={`interest-detail-view ${activeInterest ? 'visible' : ''}`}>
                 {activeInterest ? (
