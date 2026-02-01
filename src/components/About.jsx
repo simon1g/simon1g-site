@@ -1,9 +1,7 @@
 import React from 'react';
 import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube, Music, PawPrint } from 'lucide-react';
 import '../styles/interests.css';
-import nglLogo from '../assets/ngl-removebg-preview.png';
-
-import nglLogo from '../assets/ngl-removebg-preview.png';
+import nglLogo from '../assets/ngl.svg';
 import steamLogo from '../assets/steam-svgrepo-com.svg';
 import soundcloudLogo from '../assets/soundcloud-164-svgrepo-com.svg';
 import redditLogo from '../assets/reddit-svgrepo-com.svg';
