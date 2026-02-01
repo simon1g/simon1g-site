@@ -30,7 +30,7 @@ export default function About() {
                 color: 'var(--text-secondary)',
                 lineHeight: '1.6'
             }}>
-                Hello again, im cool guy (i think) who likes shit ton of things, i'm always happy and open to try new things, other then that i... mhhhh... idk...
+                Hello again, im a cool guy (i think) who likes shit ton of things, i'm always happy and open to try new things, other then that i... mhhhh... idk...
             </p>
 
             <div className={`interest-detail-view ${activeInterest ? 'visible' : ''}`}>
