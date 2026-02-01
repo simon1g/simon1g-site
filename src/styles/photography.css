@@ -22,7 +22,10 @@
     overflow: hidden;
     cursor: pointer;
     aspect-ratio: 1 / 1;
-    background-color: var(--card-bg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
 }
 
 .photo-img {

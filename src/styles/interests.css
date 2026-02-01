@@ -41,7 +41,8 @@
 
 .interest-item.active {
     border-color: var(--accent-color);
-    background-color: var(--card-bg);
+    background: var(--glass-bg);
+    box-shadow: 0 0 15px rgba(190, 18, 60, 0.3);
 }
 
 /* DESKTOP ONLY: Description Area */
@@ -75,7 +76,7 @@
 
     .interest-detail-view.visible {
         border-color: var(--accent-color);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 15px rgba(190, 18, 60, 0.2);
     }
 }
 

@@ -44,6 +44,10 @@
     }
 }
 
+[data-theme='light'] .starry-background {
+    display: none;
+}
+
 .starry-background {
     position: fixed;
     top: 0;
@@ -60,7 +64,8 @@
     position: absolute;
     background: white;
     border-radius: 50%;
-    opacity: 0.5;
+    opacity: 0.6;
+    box-shadow: 0 0 4px 1px rgba(255, 255, 255, 0.3);
 }
 
 .star.twinkle {
@@ -74,7 +79,7 @@
     background: linear-gradient(90deg, white, transparent);
     box-shadow: 0 0 10px 2px white;
     opacity: 0;
-    animation: shootingStar 5s infinite ease-in;
+    animation: shootingStar 8s infinite ease-in;
 }
 
 .star-container {

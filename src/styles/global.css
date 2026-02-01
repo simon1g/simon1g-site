@@ -11,13 +11,11 @@
     /* Rose 700 / Maroon */
     --accent-hover: #9f1239;
     /* Rose 800 */
-    --border-color: #5c0f20;
-    /* Dark Maroon Border */
-    --card-bg: rgba(76, 5, 25, 0.4);
+    --card-bg: rgba(76, 5, 25, 0.25);
     /* Translucent Rose 950 */
-    --glass-bg: rgba(76, 5, 25, 0.4);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-blur: 12px;
+    --glass-bg: rgba(46, 2, 13, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-blur: 16px;
     --success-color: #10b981;
 
     /* Layout */
@@ -44,9 +42,9 @@
     /* Maroon */
     --accent-hover: #600000;
     --border-color: #fad1d1;
-    --card-bg: rgba(255, 240, 245, 0.6);
-    --glass-bg: rgba(255, 240, 245, 0.6);
-    --glass-border: rgba(128, 0, 0, 0.1);
+    --card-bg: rgba(255, 240, 245, 0.4);
+    --glass-bg: rgba(255, 240, 245, 0.3);
+    --glass-border: rgba(128, 0, 0, 0.08);
     --glass-blur: 10px;
 }
 
@@ -61,8 +59,7 @@
 
 html {
     font-family: var(--font-main);
-    background-color: #000;
-    /* Solid fallback */
+    background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.5;
     scroll-behavior: smooth;
