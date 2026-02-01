@@ -239,3 +239,13 @@
     color: #FF5500;
     border-color: #FF5500;
 }
+
+.about-social-link.reddit:hover {
+    color: #FF4500;
+    border-color: #FF4500;
+}
+
+.about-social-link.steam:hover {
+    color: #00ADEE;
+    border-color: #00ADEE;
+}
