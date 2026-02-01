@@ -32,7 +32,6 @@ export default function Home() {
           border: 1px solid var(--glass-border);
           color: var(--text-color);
           font-weight: 600;
-          border-radius: 6px;
           transition: all 0.2s;
         }
         .home-btn:hover {

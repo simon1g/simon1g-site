@@ -44,10 +44,6 @@
     }
 }
 
-[data-theme='light'] .starry-background {
-    display: none;
-}
-
 .starry-background {
     position: fixed;
     top: 0;
@@ -58,6 +54,12 @@
     background: radial-gradient(circle at center, var(--bg-color) 0%, #000 100%);
     overflow: hidden;
     pointer-events: none;
+    transition: opacity 0.5s ease;
+    opacity: 1;
+}
+
+[data-theme='light'] .starry-background {
+    opacity: 0;
 }
 
 .star {
