@@ -26,15 +26,20 @@ export default function Home() {
             <style>{`
         .home-btn {
           padding: 0.75rem 1.5rem;
-          background-color: var(--accent-color);
-          color: var(--bg-color);
+          background: var(--glass-bg);
+          backdrop-filter: blur(var(--glass-blur));
+          -webkit-backdrop-filter: blur(var(--glass-blur));
+          border: 1px solid var(--glass-border);
+          color: var(--text-color);
           font-weight: 600;
           border-radius: 6px;
-          transition: transform 0.2s, opacity 0.2s;
+          transition: all 0.2s;
         }
         .home-btn:hover {
           transform: translateY(-2px);
-          opacity: 0.9;
+          background: var(--accent-color);
+          color: white;
+          border-color: var(--accent-color);
         }
       `}</style>
         </div>

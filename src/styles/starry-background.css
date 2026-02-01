@@ -1,0 +1,85 @@
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes drift {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes shootingStar {
+    0% {
+        transform: translateX(0) translateY(0) rotate(-45deg) scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+        scale: 1;
+    }
+
+    20% {
+        transform: translateX(-500px) translateY(500px) rotate(-45deg) scale(1);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(-500px) translateY(500px) rotate(-45deg) scale(0);
+        opacity: 0;
+    }
+}
+
+.starry-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at center, var(--bg-color) 0%, #000 100%);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+.star.twinkle {
+    animation: twinkle var(--duration) infinite ease-in-out;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: linear-gradient(90deg, white, transparent);
+    box-shadow: 0 0 10px 2px white;
+    opacity: 0;
+    animation: shootingStar 5s infinite ease-in;
+}
+
+.star-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    will-change: transform;
+}

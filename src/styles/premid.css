@@ -1,9 +1,9 @@
-/* PreMiD Activity Styles */
 .premid-container {
-    background-color: var(--card-bg);
-    border-bottom: 1px solid var(--border-color);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--glass-border);
     padding: 0;
-    /* Removed vertical padding to allow image to stretch */
     width: 100%;
     margin-top: var(--navbar-height);
     font-size: 0.9rem;

@@ -43,16 +43,21 @@ export default function About() {
         <div className="container section">
             <h2 className="section-title">About</h2>
 
-            <p style={{
-                textAlign: 'center',
-                maxWidth: '700px',
+            <div className="glass-card" style={{
+                padding: '2rem',
+                maxWidth: '800px',
                 margin: '0 auto 3rem auto',
-                fontSize: '1.2rem',
-                color: 'var(--text-secondary)',
-                lineHeight: '1.6'
+                textAlign: 'center'
             }}>
-                Hello again, im a cool guy (i think) who likes shit ton of things, i'm always happy and open to try new things, other then that i... mhhhh... idk...
-            </p>
+                <p style={{
+                    fontSize: '1.2rem',
+                    color: 'var(--text-secondary)',
+                    lineHeight: '1.6',
+                    margin: 0
+                }}>
+                    Hello again, im a cool guy (i think) who likes shit ton of things, i'm always happy and open to try new things, other then that i... mhhhh... idk...
+                </p>
+            </div>
 
             <div className="mobile-hint">
                 <p>click to expand the intrest silly</p>
@@ -131,17 +136,21 @@ export default function About() {
                     <span>Steam</span>
                 </a>
             </div>
-            <p style={{
-                textAlign: 'center',
+            <div className="glass-card" style={{
+                padding: '2rem',
                 maxWidth: '900px',
-                margin: '0 auto 3rem auto',
-                fontSize: '1.2rem',
-                color: 'var(--text-secondary)',
-                lineHeight: '1.6',
-                marginTop: '30px'
+                margin: '30px auto 3rem auto',
+                textAlign: 'center'
             }}>
-                Also im an ambivert and i have level 1 autism so i may be a bit stiff sometimes, suffer from anxiety ¯\_(ツ)_/¯ it is what it is, im a short king of 174cm or 5'7 american tall. Spend half of my time outside, hiking, cycling, walking, stargazing and the other half inside mostly, gaming, sometimes programming or drawing or just being sad or happy. I'm also a massive weeb soooo, also favorite color being maroon (if it wasnt obvious enough), and and i wish i had a vtuber girlfriend but beggers cant be choosers
-            </p>
+                <p style={{
+                    fontSize: '1.2rem',
+                    color: 'var(--text-secondary)',
+                    lineHeight: '1.6',
+                    margin: 0
+                }}>
+                    Also im an ambivert and i have level 1 autism so i may be a bit stiff sometimes, suffer from anxiety ¯\_(ツ)_/¯ it is what it is, im a short king of 174cm or 5'7 american tall. Spend half of my time outside, hiking, cycling, walking, stargazing and the other half inside mostly, gaming, sometimes programming or drawing or just being sad or happy. I'm also a massive weeb soooo, also favorite color being maroon (if it wasnt obvious enough), and and i wish i had a vtuber girlfriend but beggers cant be choosers
+                </p>
+            </div>
         </div>
     );
 }

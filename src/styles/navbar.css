@@ -4,23 +4,15 @@
     left: 0;
     width: 100%;
     height: var(--navbar-height);
-    background-color: rgba(var(--bg-color), 0.85);
-    /* Need to convert hex to rgb for this, maybe use solid for now or CSS variable for rgb components */
-    background-color: var(--bg-color);
-    /* Fallback */
-    border-bottom: 1px solid var(--border-color);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--glass-border);
     z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Center content */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-}
-
-/* Helper to utilize RGBA if we had RGB vars, but utilizing opacity on element or background color with alpha */
-.navbar {
-    background-color: color-mix(in srgb, var(--bg-color) 85%, transparent);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-container {

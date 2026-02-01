@@ -13,8 +13,11 @@
     /* Rose 800 */
     --border-color: #5c0f20;
     /* Dark Maroon Border */
-    --card-bg: #4c0519;
-    /* Rose 950 / Dark Maroon */
+    --card-bg: rgba(76, 5, 25, 0.4);
+    /* Translucent Rose 950 */
+    --glass-bg: rgba(76, 5, 25, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-blur: 12px;
     --success-color: #10b981;
 
     /* Layout */
@@ -41,7 +44,10 @@
     /* Maroon */
     --accent-hover: #600000;
     --border-color: #fad1d1;
-    --card-bg: #fff0f5;
+    --card-bg: rgba(255, 240, 245, 0.6);
+    --glass-bg: rgba(255, 240, 245, 0.6);
+    --glass-border: rgba(128, 0, 0, 0.1);
+    --glass-blur: 10px;
 }
 
 /* Reset & Base */
@@ -55,7 +61,8 @@
 
 html {
     font-family: var(--font-main);
-    background-color: var(--bg-color);
+    background-color: #000;
+    /* Solid fallback */
     color: var(--text-color);
     line-height: 1.5;
     scroll-behavior: smooth;
@@ -67,6 +74,7 @@ html {
 
 body {
     min-height: 100vh;
+    background-color: transparent;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     /* Prevent horizontal scroll */
@@ -93,6 +101,19 @@ button {
     border: none;
     background: none;
     font-family: inherit;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] .glass-card {
+    box-shadow: 0 8px 32px 0 rgba(128, 0, 0, 0.1);
 }
 
 /* Utilities */
