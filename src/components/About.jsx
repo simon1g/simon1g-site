@@ -94,7 +94,9 @@ export default function About() {
                 ))}
             </div>
 
-
+            <p>
+                Links to my socials:
+            </p>
 
             <div className="about-socials">
                 <a href="https://twitter.com/simon1g_" target="_blank" rel="noopener noreferrer" className="about-social-link twitter">
