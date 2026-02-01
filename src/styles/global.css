@@ -10,9 +10,8 @@
     --accent-color: #be123c;
     /* Rose 700 / Maroon */
     --accent-hover: #9f1239;
-    /* Rose 800 */
-    --card-bg: rgba(76, 5, 25, 0.25);
-    /* Translucent Rose 950 */
+    --card-bg: #4c0519;
+    /* Rose 950 / Dark Maroon */
     --glass-bg: rgba(46, 2, 13, 0.2);
     --glass-border: rgba(255, 255, 255, 0.08);
     --glass-blur: 16px;
@@ -42,7 +41,7 @@
     /* Maroon */
     --accent-hover: #600000;
     --border-color: #fad1d1;
-    --card-bg: rgba(255, 240, 245, 0.4);
+    --card-bg: #fff0f5;
     --glass-bg: rgba(255, 240, 245, 0.3);
     --glass-border: rgba(128, 0, 0, 0.08);
     --glass-blur: 10px;

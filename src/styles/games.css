@@ -25,12 +25,8 @@
     aspect-ratio: 2 / 3;
     /* Typical game poster ratio */
     cursor: pointer;
-    background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border: 1px solid var(--glass-border);
+    background-color: var(--card-bg);
     border-radius: 8px;
-    /* Added slight radius for games */
 }
 
 .game-icon {
