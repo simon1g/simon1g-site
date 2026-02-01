@@ -97,7 +97,7 @@ export default function About() {
             <p style={{
                 textAlign: 'center',
                 maxWidth: '700px',
-                margin: '0 auto 3rem auto',
+                margin: '0 auto 0.5rem auto',
                 fontSize: '1.2rem',
                 color: 'var(--text-secondary)',
                 lineHeight: '1.6'
