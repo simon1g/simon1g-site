@@ -26,7 +26,6 @@
     /* Typical game poster ratio */
     cursor: pointer;
     background-color: var(--card-bg);
-    border-radius: 8px;
 }
 
 .game-icon {
