@@ -1,5 +1,5 @@
 import React from 'react';
-import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube, Music, MessageCircle, PawPrint } from 'lucide-react';
+import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube, Music, MessageCircle, PawPrint, Cloud } from 'lucide-react';
 import '../styles/interests.css';
 
 export default function About() {
@@ -85,7 +85,7 @@ export default function About() {
                     <span>NGL</span>
                 </a>
                 <a href="https://soundcloud.com/simon1g-xyz" target="_blank" rel="noopener noreferrer" className="about-social-link soundcloud">
-                    <Music size={24} />
+                    <Cloud size={24} />
                     <span>SoundCloud</span>
                 </a>
             </div>
