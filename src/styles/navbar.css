@@ -111,12 +111,12 @@
 
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
+        display: flex;
         position: absolute;
         top: var(--navbar-height);
         left: 0;
         width: 100%;
-        background: rgba(46, 2, 13, 0.85);
+        background: rgba(46, 2, 13, 0.95);
         backdrop-filter: blur(var(--glass-blur));
         -webkit-backdrop-filter: blur(var(--glass-blur));
         border-bottom: 1px solid var(--glass-border);
@@ -132,10 +132,15 @@
         border-radius: 0;
         overflow: hidden;
         z-index: 1200;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out;
     }
 
     .nav-links.open {
-        display: flex;
+        max-height: 500px;
+        opacity: 1;
+        padding: calc(var(--spacing-md) + 0.25rem);
     }
 
     .hamburger {
