@@ -116,14 +116,11 @@
         top: var(--navbar-height);
         left: 0;
         width: 100%;
-        background: var(--glass-bg);
-        backdrop-filter: blur(var(--glass-blur));
-        -webkit-backdrop-filter: blur(var(--glass-blur));
+        background-color: var(--bg-color);
         flex-direction: column;
         padding: var(--spacing-md);
-        border-bottom: 1px solid var(--glass-border);
+        border-bottom: 1px solid var(--border-color);
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        transition: background 0.5s ease, border-color 0.5s ease, backdrop-filter 0.5s ease;
     }
 
     .nav-links.open {
