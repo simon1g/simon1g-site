@@ -223,3 +223,17 @@ button {
         transform: translateY(0);
     }
 }
+
+/* Mobile: add a bit more horizontal padding so text doesn't touch screen edges */
+@media (max-width: 480px) {
+    .container {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    /* Slightly reduce big section paddings on very small devices */
+    .section {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}

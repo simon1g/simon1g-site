@@ -116,11 +116,19 @@
         top: var(--navbar-height);
         left: 0;
         width: 100%;
-        background-color: var(--bg-color);
+        background: var(--glass-bg);
+        backdrop-filter: blur(var(--glass-blur));
+        -webkit-backdrop-filter: blur(var(--glass-blur));
+        border-bottom: 1px solid var(--glass-border);
         flex-direction: column;
-        padding: var(--spacing-md);
-        border-bottom: 1px solid var(--border-color);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        padding: calc(var(--spacing-md) + 0.25rem);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        border-top: 1px solid rgba(0,0,0,0.15);
+        gap: var(--spacing-sm);
+        align-items: stretch;
+        /* small radius so it reads like a floating panel */
+        border-radius: 0 0 8px 8px;
+        overflow: hidden;
     }
 
     .nav-links.open {
@@ -129,5 +137,22 @@
 
     .hamburger {
         display: flex;
+    }
+
+    /* Ensure nav links and their children have comfortable padding and readable width */
+    .nav-links .nav-link {
+        padding: calc(var(--spacing-sm) + 0.25rem) var(--spacing-md);
+        width: 100%;
+        text-align: center;
+        border-radius: 6px;
+        margin: 2px 0;
+        background: transparent;
+    }
+
+    .nav-links .nav-actions {
+        justify-content: center;
+        padding-top: var(--spacing-sm);
+        border-top: 1px solid rgba(255,255,255,0.02);
+        margin-top: calc(var(--spacing-sm));
     }
 }
