@@ -110,6 +110,15 @@
 }
 
 @media (max-width: 768px) {
+    .navbar-container {
+        position: relative;
+    }
+
+    .mobile-right-group {
+        display: flex;
+        align-items: center;
+    }
+
     .nav-links {
         display: flex;
         position: absolute;
@@ -145,6 +154,7 @@
 
     .hamburger {
         display: flex;
+        margin-left: var(--spacing-md);
     }
 
     /* Ensure nav links and their children have comfortable padding and readable width */
@@ -162,5 +172,9 @@
     .nav-links .nav-link.active {
         background: rgba(255, 255, 255, 0.08);
         color: var(--accent-color);
+    }
+
+    .nav-actions {
+        gap: var(--spacing-sm);
     }
 }

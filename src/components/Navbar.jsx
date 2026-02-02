@@ -45,10 +45,6 @@ export default function Navbar() {
                     simon1g
                 </NavLink>
 
-                <div className="hamburger" onClick={toggleMenu}>
-                    {isOpen ? <X size={24} /> : <Menu size={24} />}
-                </div>
-
                 <div className={`nav-links ${isOpen ? 'open' : ''}`}>
                     {navItems.map((item) => (
                         <NavLink
@@ -62,14 +58,20 @@ export default function Navbar() {
                     ))}
                 </div>
 
-                <div className="nav-actions">
-                    <span
-                        className={`status-indicator ${isOnline ? 'status-online' : ''}`}
-                        title={isOnline ? "Online" : "Offline"}
-                        aria-label={isOnline ? "Status: Online" : "Status: Offline"}
-                    />
+                <div className="mobile-right-group">
+                    <div className="nav-actions">
+                        <span
+                            className={`status-indicator ${isOnline ? 'status-online' : ''}`}
+                            title={isOnline ? "Online" : "Offline"}
+                            aria-label={isOnline ? "Status: Online" : "Status: Offline"}
+                        />
 
-                    <ThemeToggle />
+                        <ThemeToggle />
+                    </div>
+
+                    <div className="hamburger" onClick={toggleMenu}>
+                        {isOpen ? <X size={24} /> : <Menu size={24} />}
+                    </div>
                 </div>
             </div>
         </nav>
