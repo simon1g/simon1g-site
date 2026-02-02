@@ -129,8 +129,8 @@
         border-top: 1px solid rgba(0,0,0,0.12);
         gap: var(--spacing-sm);
         align-items: stretch;
-        /* small radius so it reads like a floating panel */
-        border-radius: 0 0 8px 8px;
+        /* square corners */
+        border-radius: 0;
         overflow: hidden;
         z-index: 1200;
     }
@@ -148,7 +148,7 @@
         padding: calc(var(--spacing-sm) + 0.25rem) var(--spacing-md);
         width: 100%;
         text-align: center;
-        border-radius: 6px;
+        border-radius: 0;
         margin: 2px 0;
         background: transparent;
         color: var(--text-color);
