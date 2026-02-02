@@ -165,8 +165,8 @@
     }
 
     .nav-links .nav-actions {
-        position: fixed;
-        top: 50%;
+        position: absolute;
+        top: calc(var(--navbar-height) / 2);
         right: var(--spacing-md);
         transform: translateY(-50%);
         justify-content: flex-end;
