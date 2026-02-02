@@ -60,18 +60,16 @@ export default function Navbar() {
                             {item.name}
                         </NavLink>
                     ))}
+                </div>
 
-                    <div className="nav-actions">
-                        <span
-                            className={`status-indicator ${isOnline ? 'status-online' : ''}`}
-                            title={isOnline ? "Online" : "Offline"}
-                            aria-label={isOnline ? "Status: Online" : "Status: Offline"}
-                        />
+                <div className="nav-actions">
+                    <span
+                        className={`status-indicator ${isOnline ? 'status-online' : ''}`}
+                        title={isOnline ? "Online" : "Offline"}
+                        aria-label={isOnline ? "Status: Online" : "Status: Offline"}
+                    />
 
-
-
-                        <ThemeToggle />
-                    </div>
+                    <ThemeToggle />
                 </div>
             </div>
         </nav>

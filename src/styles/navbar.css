@@ -163,18 +163,4 @@
         background: rgba(255, 255, 255, 0.08);
         color: var(--accent-color);
     }
-
-    .nav-links .nav-actions {
-        position: absolute;
-        top: calc(var(--navbar-height) / 2);
-        right: var(--spacing-md);
-        transform: translateY(-50%);
-        justify-content: flex-end;
-        padding: 0;
-        border: none;
-        margin: 0;
-        gap: var(--spacing-sm);
-        flex-direction: row;
-        border-top: none;
-    }
 }
