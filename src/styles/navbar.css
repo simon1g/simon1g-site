@@ -165,9 +165,16 @@
     }
 
     .nav-links .nav-actions {
-        justify-content: center;
-        padding-top: var(--spacing-sm);
-        border-top: 1px solid rgba(255,255,255,0.02);
-        margin-top: calc(var(--spacing-sm));
+        position: fixed;
+        top: 50%;
+        right: var(--spacing-md);
+        transform: translateY(-50%);
+        justify-content: flex-end;
+        padding: 0;
+        border: none;
+        margin: 0;
+        gap: var(--spacing-sm);
+        flex-direction: row;
+        border-top: none;
     }
 }
