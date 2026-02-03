@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-// Use Vite's glob import to automatically discover images in the assets folder.
-// This allows the grid to update automatically when files are added or removed.
+// Eager glob: resolves image URLs synchronously so the grid renders immediately.
+// Actual image bytes load on demand via LazyImage (Intersection Observer + loading="lazy").
 const pixelartGlobs = import.meta.glob('../assets/pixelart/*.{png,jpg,jpeg,gif,webp,PNG,JPG,JPEG,GIF,WEBP}', { eager: true, import: 'default' });
 const picsGlobs = import.meta.glob('../assets/pics/*.{png,jpg,jpeg,gif,webp,PNG,JPG,JPEG,GIF,WEBP}', { eager: true, import: 'default' });
 const astropicsGlobs = import.meta.glob('../assets/astropics/*.{png,jpg,jpeg,gif,webp,PNG,JPG,JPEG,GIF,WEBP}', { eager: true, import: 'default' });
@@ -17,7 +17,6 @@ export function useGallery(category) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // With eager globs, the images are already loaded in memory
         setImages(galleries[category] || []);
         setLoading(false);
     }, [category]);

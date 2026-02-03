@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useGallery } from '../hooks/useGallery';
 import Lightbox from './Lightbox';
+import LazyImage from './LazyImage';
 import '../styles/photography.css';
 
 export default function Photography() {
@@ -33,11 +34,10 @@ export default function Photography() {
                         tabIndex={0}
                         onKeyDown={(e) => e.key === 'Enter' && setSelectedImage(src)}
                     >
-                        <img
+                        <LazyImage
                             src={src}
                             alt={`Photo ${index + 1}`}
                             className="photo-img"
-                            loading="lazy"
                         />
                     </div>
                 ))}

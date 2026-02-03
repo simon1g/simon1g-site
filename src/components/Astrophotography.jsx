@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useGallery } from '../hooks/useGallery';
 import Lightbox from './Lightbox';
+import LazyImage from './LazyImage';
 import '../styles/astrophotography.css';
 
 export default function Astrophotography() {
@@ -33,11 +34,10 @@ export default function Astrophotography() {
                         tabIndex={0}
                         onKeyDown={(e) => e.key === 'Enter' && setSelectedImage(src)}
                     >
-                        <img
+                        <LazyImage
                             src={src}
                             alt={`Astrophoto ${index + 1}`}
                             className="astro-img"
-                            loading="lazy"
                         />
                     </div>
                 ))}

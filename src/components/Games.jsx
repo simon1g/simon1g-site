@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import LazyImage from './LazyImage';
 import '../styles/games.css';
 
 export default function Games() {
@@ -45,7 +46,11 @@ export default function Games() {
                         aria-label={`Open ${game.name} page`}
                         title={game.name}
                     >
-                        <img src={game.icon} alt={game.name} className="game-icon" loading="lazy" />
+                        <LazyImage
+                            src={game.icon}
+                            alt={game.name}
+                            className="game-icon"
+                        />
                     </a>
                 ))}
             </div>

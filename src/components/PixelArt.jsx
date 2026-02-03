@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useGallery } from '../hooks/useGallery';
 import Lightbox from './Lightbox';
+import LazyImage from './LazyImage';
 import '../styles/pixelart.css';
 
 export default function PixelArt() {
@@ -33,11 +34,10 @@ export default function PixelArt() {
                         tabIndex={0}
                         onKeyDown={(e) => e.key === 'Enter' && setSelectedImage(src)}
                     >
-                        <img
+                        <LazyImage
                             src={src}
                             alt={`Pixel Art ${index + 1}`}
                             className="pixel-img"
-                            loading="lazy"
                         />
                     </div>
                 ))}
