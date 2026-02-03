@@ -20,6 +20,7 @@
     /* Layout */
     --max-width: 1200px;
     --navbar-height: 70px;
+    --premid-bar-height: 60px;
 
     /* Fonts */
     --font-main: 'Inter', system-ui, -apple-system, sans-serif;
@@ -31,6 +32,10 @@
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
     --spacing-xl: 4rem;
+
+    /* Theme toggle (sync with html transition) */
+    --theme-transition-duration: 0.5s;
+    --theme-transition-ease: ease;
 }
 
 [data-theme='light'] {
@@ -62,7 +67,7 @@ html {
     color: var(--text-color);
     line-height: 1.5;
     scroll-behavior: smooth;
-    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+    transition: background-color var(--theme-transition-duration) var(--theme-transition-ease), color var(--theme-transition-duration) var(--theme-transition-ease), border-color var(--theme-transition-duration) var(--theme-transition-ease), box-shadow var(--theme-transition-duration) var(--theme-transition-ease);
     overflow-x: hidden;
     /* Prevent horizontal scroll */
     width: 100%;

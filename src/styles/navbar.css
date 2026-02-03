@@ -119,81 +119,72 @@
         align-items: center;
     }
 
-    .nav-links {
-        display: flex;
-        position: absolute;
-        top: 160%;
-        left: 0;
-        width: 100%;
-        background: rgba(46, 2, 13, 0.95);
-        backdrop-filter: blur(var(--glass-blur));
-        -webkit-backdrop-filter: blur(var(--glass-blur));
-        border-bottom: 1px solid var(--glass-border);
-        border-left: 1px solid var(--glass-border);
-        border-right: 1px solid var(--glass-border);
-        flex-direction: column;
-        padding: calc(var(--spacing-md) + 0.25rem);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-        border-top: 1px solid rgba(0,0,0,0.12);
-        gap: var(--spacing-sm);
-        align-items: stretch;
-        /* square corners */
-        border-radius: 0;
-        overflow: hidden;
-        z-index: 1200;
-        max-height: 0;
-        opacity: 0;
-        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .nav-links.open {
-        max-height: 500px;
-        opacity: 1;
-        padding: calc(var(--spacing-md) + 0.25rem);
-    }
-
     .hamburger {
         display: flex;
         margin-left: var(--spacing-md);
     }
 
-    /* Ensure nav links and their children have comfortable padding and readable width */
-    .nav-links .nav-link {
-        padding: calc(var(--spacing-sm) + 0.25rem) var(--spacing-md);
-        width: 100%;
-        text-align: center;
-        border-radius: 0;
-        margin: 2px 0;
-        background: transparent;
-        color: var(--text-color);
-        transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    .nav-links .nav-link:hover,
-    .nav-links .nav-link.active {
-        background: rgba(255, 255, 255, 0.08);
-        color: var(--accent-color);
-    }
-
-    /* Light theme overrides for mobile dropdown */
-    [data-theme='light'] .nav-links {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(var(--glass-blur));
-        -webkit-backdrop-filter: blur(var(--glass-blur));
-        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-        border-left: 1px solid rgba(0, 0, 0, 0.04);
-        border-right: 1px solid rgba(0, 0, 0, 0.04);
-        color: var(--text-color);
-        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, padding 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    [data-theme='light'] .nav-links .nav-link:hover,
-    [data-theme='light'] .nav-links .nav-link.active {
-        background: rgba(0, 0, 0, 0.06);
-        color: var(--accent-color);
-    }
-
     .nav-actions {
         gap: var(--spacing-sm);
     }
+}
+
+/* Mobile menu portal: rendered in document.body so backdrop-filter blurs the page */
+.mobile-menu-portal {
+    position: fixed;
+    inset: 0;
+    top: var(--navbar-height);
+    z-index: 1001;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.28s ease-out;
+}
+
+.mobile-menu-portal.mobile-menu-portal--open {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.mobile-menu-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-top: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    padding: calc(var(--spacing-md) + 0.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    align-items: stretch;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    transform: translateZ(0);
+}
+
+.mobile-menu-portal .nav-link {
+    padding: calc(var(--spacing-sm) + 0.25rem) var(--spacing-md);
+    width: 100%;
+    text-align: center;
+    border-radius: 0;
+    margin: 2px 0;
+    background: transparent;
+    color: var(--text-color);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.mobile-menu-portal .nav-link:hover,
+.mobile-menu-portal .nav-link.active {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--accent-color);
+}
+
+[data-theme='light'] .mobile-menu-glass {
+    box-shadow: 0 10px 25px rgba(128, 0, 0, 0.12);
+}
+
+[data-theme='light'] .mobile-menu-portal .nav-link:hover,
+[data-theme='light'] .mobile-menu-portal .nav-link.active {
+    background: rgba(0, 0, 0, 0.06);
+    color: var(--accent-color);
 }

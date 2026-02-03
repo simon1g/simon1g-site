@@ -8,7 +8,7 @@ import Photography from './components/Photography';
 import Astrophotography from './components/Astrophotography';
 import About from './components/About';
 import Games from './components/Games';
-import StarryBackground from './components/StarryBackground';
+import Background from './components/Background';
 
 const FooterMessage = () => {
   const messages = [
@@ -56,7 +56,7 @@ const FooterMessage = () => {
 function App() {
   return (
     <>
-      <StarryBackground />
+      <Background />
       <Navbar />
       <PreMiD />
       <main style={{ minHeight: 'calc(100vh - 70px - 60px)' }}> {/* Adjust min height including premid bar */}

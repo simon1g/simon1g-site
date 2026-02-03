@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { NavLink } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import '../styles/navbar.css';
 
+const MOBILE_BREAKPOINT = 768;
+
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isOnline, setIsOnline] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
-    React.useEffect(() => {
+    useEffect(() => {
+        const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
+        const update = () => setIsMobile(mql.matches);
+        update();
+        mql.addEventListener('change', update);
+        return () => mql.removeEventListener('change', update);
+    }, []);
+
+    useEffect(() => {
         const API_ENDPOINT = 'https://simon1g-site.pages.dev/api/premid';
         const fetchStatus = async () => {
             try {
@@ -33,32 +45,37 @@ export default function Navbar() {
         { name: 'Home', path: '/' },
         { name: 'Pixel Art', path: '/pixelart' },
         { name: 'Photography', path: '/photography' },
-        { name: 'Astrophotography', path: '/astropics' }, // URL naming convention check? User said /astropics in assets, I'll use /astrophotography for route
+        { name: 'Astrophotography', path: '/astropics' },
         { name: 'About', path: '/about' },
         { name: 'Games', path: '/games' },
     ];
 
-    return (
-        <nav className="navbar">
-            <div className="navbar-container">
-                <NavLink to="/" className="brand" onClick={() => setIsOpen(false)}>
-                    simon1g
+    const navLinksContent = (
+        <>
+            {navItems.map((item) => (
+                <NavLink
+                    key={item.name}
+                    to={item.path}
+                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                    onClick={() => setIsOpen(false)}
+                >
+                    {item.name}
                 </NavLink>
+            ))}
+        </>
+    );
 
-                <div className={`nav-links ${isOpen ? 'open' : ''}`}>
-                    {navItems.map((item) => (
-                        <NavLink
-                            key={item.name}
-                            to={item.path}
-                            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                            onClick={() => setIsOpen(false)}
-                        >
-                            {item.name}
-                        </NavLink>
-                    ))}
-                </div>
+    return (
+        <>
+            <nav className="navbar">
+                <div className="navbar-container">
+                    <NavLink to="/" className="brand" onClick={() => setIsOpen(false)}>
+                        simon1g
+                    </NavLink>
 
-                <div className="mobile-right-group">
+                    {!isMobile && <div className="nav-links">{navLinksContent}</div>}
+
+                    <div className="mobile-right-group">
                     <div className="nav-actions">
                         <span
                             className={`status-indicator ${isOnline ? 'status-online' : ''}`}
@@ -75,5 +92,20 @@ export default function Navbar() {
                 </div>
             </div>
         </nav>
+
+            {isMobile &&
+                createPortal(
+                    <div
+                        className={`mobile-menu-portal ${isOpen ? 'mobile-menu-portal--open' : ''}`}
+                        onClick={() => setIsOpen(false)}
+                        aria-hidden={!isOpen}
+                    >
+                        <div className="mobile-menu-glass" onClick={(e) => e.stopPropagation()}>
+                            {navLinksContent}
+                        </div>
+                    </div>,
+                    document.body
+                )}
+        </>
     );
 }
