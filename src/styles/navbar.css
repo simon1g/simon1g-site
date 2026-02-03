@@ -137,7 +137,7 @@
     z-index: 1001;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.28s ease-out;
+    transition: opacity 0.2s ease-out;
 }
 
 .mobile-menu-portal.mobile-menu-portal--open {
@@ -145,6 +145,7 @@
     opacity: 1;
 }
 
+/* Glass panel: slide-down (no overflow so blur stays) + links stagger in */
 .mobile-menu-glass {
     background: var(--glass-bg);
     backdrop-filter: blur(var(--glass-blur));
@@ -159,8 +160,39 @@
     align-items: stretch;
     max-width: var(--max-width);
     margin: 0 auto;
-    transform: translateZ(0);
+    transform: translateZ(0) translateY(-100%);
+    opacity: 0;
+    transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.25s ease-out;
 }
+
+.mobile-menu-portal.mobile-menu-portal--open .mobile-menu-glass {
+    transform: translateZ(0) translateY(0);
+    opacity: 1;
+}
+
+.mobile-menu-portal .nav-link {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+        opacity 0.3s ease-out,
+        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.mobile-menu-portal.mobile-menu-portal--open .nav-link {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-menu-portal.mobile-menu-portal--open .nav-link:nth-child(1) { transition-delay: 0.05s; }
+.mobile-menu-portal.mobile-menu-portal--open .nav-link:nth-child(2) { transition-delay: 0.08s; }
+.mobile-menu-portal.mobile-menu-portal--open .nav-link:nth-child(3) { transition-delay: 0.11s; }
+.mobile-menu-portal.mobile-menu-portal--open .nav-link:nth-child(4) { transition-delay: 0.14s; }
+.mobile-menu-portal.mobile-menu-portal--open .nav-link:nth-child(5) { transition-delay: 0.17s; }
+.mobile-menu-portal.mobile-menu-portal--open .nav-link:nth-child(6) { transition-delay: 0.2s; }
 
 .mobile-menu-portal .nav-link {
     padding: calc(var(--spacing-sm) + 0.25rem) var(--spacing-md);
@@ -170,7 +202,6 @@
     margin: 2px 0;
     background: transparent;
     color: var(--text-color);
-    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .mobile-menu-portal .nav-link:hover,
