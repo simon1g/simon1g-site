@@ -55,7 +55,7 @@ export default function About() {
                     lineHeight: '1.6',
                     margin: 0
                 }}>
-                    Hello again, Simon here, im a cool guy (i think) who likes shit ton of things, i'm always happy and open to try new things, scroll down fro more info
+                    Hello again, Simon here at the big age of 23, im a cool guy (i think) who likes shit ton of things, i'm always happy and open to try new things, scroll down fro more info
                 </p>
             </div>
 
