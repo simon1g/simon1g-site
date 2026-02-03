@@ -61,6 +61,18 @@
     padding: 0;
 }
 
+/* Smooth theme transition: elements using theme variables animate when dark/light toggles */
+*,
+*::before,
+*::after {
+    transition: background-color var(--theme-transition-duration) var(--theme-transition-ease),
+        color var(--theme-transition-duration) var(--theme-transition-ease),
+        border-color var(--theme-transition-duration) var(--theme-transition-ease),
+        box-shadow var(--theme-transition-duration) var(--theme-transition-ease),
+        fill var(--theme-transition-duration) var(--theme-transition-ease),
+        stroke var(--theme-transition-duration) var(--theme-transition-ease);
+}
+
 html {
     font-family: var(--font-main);
     background-color: var(--bg-color);
@@ -80,6 +92,8 @@ body {
     overflow-x: hidden;
     /* Prevent horizontal scroll */
     width: 100%;
+    transition: background-color var(--theme-transition-duration) var(--theme-transition-ease),
+        color var(--theme-transition-duration) var(--theme-transition-ease);
 }
 
 a {
