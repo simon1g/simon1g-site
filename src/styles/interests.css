@@ -86,15 +86,12 @@
     }
 
     .interest-item {
-        width: 150px;
-        /* Base mobile width */
-    }
-
-    .interest-item.active {
-        width: 100%;
-        /* Expand width on mobile */
+        width: 340px;
+        /* Fixed width to prevent layout shift */
         max-width: 340px;
     }
+
+
 
     .interest-inline-description {
         max-height: 0;
