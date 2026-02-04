@@ -5,16 +5,22 @@
 
 .games-grid {
     display: grid;
-    /* Increased minimum width for bigger images */
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    /* Always show at least 2 cards per row on mobile */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0;
     width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
     .games-grid {
-        /* Even larger on desktop */
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        /* Allow more columns as space grows while keeping poster ratio */
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .games-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     }
 }
 
