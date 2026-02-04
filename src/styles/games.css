@@ -50,3 +50,13 @@
     outline: 2px solid var(--accent-color);
     z-index: 10;
 }
+
+.container.section {
+  padding-left: 20px;
+  padding-right: 20px;
+  /* Ensures padding is included in the total width */
+  box-sizing: border-box; 
+  /* Optional: Centers the container if it has a max-width */
+  margin-left: auto;
+  margin-right: auto;
+}
