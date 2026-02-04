@@ -42,7 +42,6 @@ export default function PreMiD() {
                 <span className="premid-label">OFFLINE</span>
                 <div className="premid-offline">
                     <Activity size={16} />
-                    <span>Nothing right now</span>
                 </div>
             </div>
         </div>
