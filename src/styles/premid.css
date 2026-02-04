@@ -21,7 +21,6 @@
     margin: 0 auto;
     padding: 0 var(--spacing-md);
     min-height: 52px;
-    /* Define a minimum height for the bar */
 }
 
 .premid-label {
@@ -33,11 +32,17 @@
     flex-shrink: 0;
 }
 
+.premid-activity-wrapper {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-md) - 5px);
+    flex: 1;
+}
+
 .premid-activity {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
-    flex: 1;
     overflow: hidden;
     height: 100%;
 }
@@ -47,7 +52,8 @@
     cursor: pointer;
     transition: background-color 0.2s;
     border-radius: 0;
-    padding-right: var(--spacing-sm);
+    padding-right: 5px;
+    padding-left: 0;
 }
 
 .premid-activity.is-clickable:hover {
@@ -58,7 +64,6 @@
     height: 52px;
     width: 52px;
     border-radius: 0;
-    /* Flush edges */
     object-fit: cover;
     flex-shrink: 0;
 }
@@ -73,19 +78,35 @@
     display: flex;
     flex-direction: column;
     line-height: 1.2;
-    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
+    min-width: 0;
+    flex-shrink: 1;
 }
 
 .premid-name {
     font-weight: 600;
     color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .premid-state {
     font-size: 0.8rem;
     color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.premid-platform {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .premid-offline {
