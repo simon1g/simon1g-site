@@ -125,9 +125,11 @@ export default function LazyImage({
             className={className}
             loading={priority ? 'eager' : 'lazy'}
             decoding={decoding}
+            fetchPriority={priority ? 'high' : 'auto'}
             style={{ 
                 opacity: isLoaded ? 1 : 0, 
                 transition: 'opacity 0.3s ease-out',
+                visibility: isLoaded ? 'visible' : 'hidden',
             }}
             {...props}
         />
