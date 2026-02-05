@@ -14,6 +14,7 @@ export default function LazyImage({
     className,
     decoding = 'async',
     loading = 'eager',
+    loading = 'lazy',
     fetchPriority = 'low',
     ...props
 }) {
