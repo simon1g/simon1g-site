@@ -1,9 +1,32 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    ViteImageOptimizer({
+      test: /\.(jpg|jpeg|png|tiff|webp|avif)$/i,
+      exclude: undefined,
+      include: undefined,
+      includePublic: true,
+      // Optimizations for Cloudflare Pages
+      png: {
+        quality: 85,
+      },
+      jpeg: {
+        quality: 85,
+      },
+      webp: {
+        lossless: true,
+      },
+      avif: {
+        lossless: true,
+      },
+      gif: {},
+    })
+  ],
   
   // Build optimizations
   build: {
@@ -49,4 +72,8 @@ export default defineConfig({
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom', 'lucide-react'],
   },
+  
+  // Image optimization for Cloudflare Pages
+  publicDir: 'public',
+  assetsInclude: /\.(png|jpe?g|gif|svg|webp|avif)$/i,
 })
