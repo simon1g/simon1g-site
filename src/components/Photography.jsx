@@ -38,6 +38,7 @@ export default function Photography() {
                             src={src}
                             alt={`Photo ${index + 1}`}
                             className="photo-img"
+                            fetchPriority={index < 6 ? 'high' : 'low'}
                         />
                     </div>
                 ))}

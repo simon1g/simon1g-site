@@ -38,6 +38,7 @@ export default function Astrophotography() {
                             src={src}
                             alt={`Astrophoto ${index + 1}`}
                             className="astro-img"
+                            fetchPriority={index < 6 ? 'high' : 'low'}
                         />
                     </div>
                 ))}
