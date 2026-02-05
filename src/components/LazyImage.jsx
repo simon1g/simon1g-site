@@ -1,13 +1,22 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const ROOT_MARGIN = '120px';
+const ROOT_MARGIN = '600px';
 const THRESHOLD = 0.01;
 
 /**
- * Renders an img only when it enters the viewport (Intersection Observer).
- * Defers image requests until near view – improves initial load and saves bandwidth.
+ * Renders an img only when it enters (or gets near) the viewport.
+ * Uses IntersectionObserver for scheduling and eager image fetch once mounted,
+ * avoiding double-lazy delays (IO + loading="lazy").
  */
-export default function LazyImage({ src, alt, className, decoding = 'async', ...props }) {
+export default function LazyImage({
+    src,
+    alt,
+    className,
+    decoding = 'async',
+    loading = 'eager',
+    fetchPriority = 'low',
+    ...props
+}) {
     const [inView, setInView] = useState(false);
     const [hasLoaded, setHasLoaded] = useState(false);
     const wrapperRef = useRef(null);
@@ -43,10 +52,12 @@ export default function LazyImage({ src, alt, className, decoding = 'async', ...
             src={src}
             alt={alt}
             className={className}
-            loading="lazy"
-            decoding="async"
+            loading={loading}
+            decoding={decoding}
+            fetchPriority={fetchPriority}
             onLoad={() => setHasLoaded(true)}
-            style={{ opacity: hasLoaded ? 1 : 0, transition: 'opacity 0.2s ease-out' }}
+            onError={() => setHasLoaded(true)}
+            style={{ opacity: hasLoaded ? 1 : 0.4, transition: 'opacity 0.2s ease-out', background: 'var(--card-bg)' }}
             {...props}
         />
     );

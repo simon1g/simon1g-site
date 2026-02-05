@@ -1,25 +1,48 @@
 import { useState, useEffect } from 'react';
 
-// Eager glob: resolves image URLs synchronously so the grid renders immediately.
-// Actual image bytes load on demand via LazyImage (Intersection Observer + loading="lazy").
-const pixelartGlobs = import.meta.glob('../assets/pixelart/*.{png,jpg,jpeg,gif,webp,PNG,JPG,JPEG,GIF,WEBP}', { eager: true, import: 'default' });
-const picsGlobs = import.meta.glob('../assets/pics/*.{png,jpg,jpeg,gif,webp,PNG,JPG,JPEG,GIF,WEBP}', { eager: true, import: 'default' });
-const astropicsGlobs = import.meta.glob('../assets/astropics/*.{png,jpg,jpeg,gif,webp,PNG,JPG,JPEG,GIF,WEBP}', { eager: true, import: 'default' });
-
-const galleries = {
-    pixelart: Object.values(pixelartGlobs),
-    pics: Object.values(picsGlobs),
-    astropics: Object.values(astropicsGlobs)
+const galleryImporters = {
+    pixelart: import.meta.glob('../assets/pixelart/*.{png,jpg,jpeg,gif,webp,PNG,JPG,JPEG,GIF,WEBP}', { import: 'default' }),
+    pics: import.meta.glob('../assets/pics/*.{png,jpg,jpeg,gif,webp,PNG,JPG,JPEG,GIF,WEBP}', { import: 'default' }),
+    astropics: import.meta.glob('../assets/astropics/*.{png,jpg,jpeg,gif,webp,PNG,JPG,JPEG,GIF,WEBP}', { import: 'default' })
 };
+
+const galleryCache = new Map();
+
+async function loadGallery(category) {
+    if (galleryCache.has(category)) {
+        return galleryCache.get(category);
+    }
+
+    const importers = galleryImporters[category];
+    if (!importers) return [];
+
+    const sortedEntries = Object.entries(importers).sort(([a], [b]) => a.localeCompare(b));
+    const images = await Promise.all(sortedEntries.map(([, importer]) => importer()));
+
+    galleryCache.set(category, images);
+    return images;
+}
 
 export function useGallery(category) {
     const [images, setImages] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loadedCategory, setLoadedCategory] = useState('');
 
     useEffect(() => {
-        setImages(galleries[category] || []);
-        setLoading(false);
+        let active = true;
+
+        loadGallery(category).then((resolvedImages) => {
+            if (!active) return;
+            setImages(resolvedImages);
+            setLoadedCategory(category);
+        });
+
+        return () => {
+            active = false;
+        };
     }, [category]);
 
-    return { images, loading };
+    return {
+        images,
+        loading: loadedCategory !== category
+    };
 }
