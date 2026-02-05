@@ -7,7 +7,15 @@ const THRESHOLD = 0.01;
  * Renders an img only when it enters the viewport (Intersection Observer).
  * Defers image requests until near view – improves initial load and saves bandwidth.
  */
-export default function LazyImage({ src, alt, className, decoding = 'async', ...props }) {
+export default function LazyImage({
+    src,
+    alt,
+    className,
+    decoding = 'async',
+    loading = 'lazy',
+    fetchPriority = 'low',
+    ...props
+}) {
     const [inView, setInView] = useState(false);
     const [hasLoaded, setHasLoaded] = useState(false);
     const wrapperRef = useRef(null);
@@ -43,8 +51,9 @@ export default function LazyImage({ src, alt, className, decoding = 'async', ...
             src={src}
             alt={alt}
             className={className}
-            loading="lazy"
-            decoding="async"
+            loading={loading}
+            decoding={decoding}
+            fetchPriority={fetchPriority}
             onLoad={() => setHasLoaded(true)}
             style={{ opacity: hasLoaded ? 1 : 0, transition: 'opacity 0.2s ease-out' }}
             {...props}
