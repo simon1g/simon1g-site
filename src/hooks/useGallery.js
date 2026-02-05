@@ -42,19 +42,16 @@ export function useGallery(category) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Check if images are already cached and set them immediately
-        if (galleryCache.has(category)) {
+        // Reset loading state when category changes
+        setLoading(true);
+        
+        // Defer to next frame to ensure proper rendering
+        const timeoutId = setTimeout(() => {
             setImages(getGalleryImages(category));
             setLoading(false);
-        } else {
-            // Defer to next frame to avoid blocking render for uncached images
-            const timeoutId = setTimeout(() => {
-                setImages(getGalleryImages(category));
-                setLoading(false);
-            }, 0);
+        }, 0);
 
-            return () => clearTimeout(timeoutId);
-        }
+        return () => clearTimeout(timeoutId);
     }, [category]);
 
     return { images, loading };
