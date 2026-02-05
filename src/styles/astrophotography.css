@@ -5,8 +5,8 @@
 
 .astro-grid {
     display: grid;
-    /* Updated to match games grid sizing */
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    /* Ensure at least 2 items per row on any screen size */
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
     gap: 0;
     /* Edge to edge for immersive feel */
     width: 100%;
