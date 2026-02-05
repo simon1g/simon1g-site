@@ -38,6 +38,7 @@ export default function Photography() {
                             src={src}
                             alt={`Photo ${index + 1}`}
                             className="photo-img"
+                            priority={index < 4} // Load first 4 images with priority
                         />
                     </div>
                 ))}

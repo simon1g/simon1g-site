@@ -38,6 +38,7 @@ export default function Astrophotography() {
                             src={src}
                             alt={`Astrophoto ${index + 1}`}
                             className="astro-img"
+                            priority={index < 4} // Load first 4 images with priority
                         />
                     </div>
                 ))}

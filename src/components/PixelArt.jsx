@@ -38,6 +38,7 @@ export default function PixelArt() {
                             src={src}
                             alt={`Pixel Art ${index + 1}`}
                             className="pixel-img"
+                            priority={index < 4} // Load first 4 images with priority
                         />
                     </div>
                 ))}
