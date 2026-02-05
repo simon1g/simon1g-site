@@ -58,6 +58,20 @@ export default function PreMiD() {
         </div>
     );
 
+    const ActivityContent = () => (
+        <>
+            {activity.assets?.large_image ? (
+                <img src={activity.assets.large_image} alt={activity.name} className="premid-icon" />
+            ) : (
+                <Music size={24} className="premid-icon-placeholder" />
+            )}
+            <div className="premid-details">
+                {activity.details && <span className="premid-name">{activity.details}</span>}
+                {activity.state && <span className="premid-state">{activity.state}</span>}
+            </div>
+        </>
+    );
+
     return (
         <div className="premid-container">
             <div className="premid-content">
@@ -70,27 +84,11 @@ export default function PreMiD() {
                             rel="noopener noreferrer"
                             className="premid-activity is-clickable"
                         >
-                            {activity.assets?.large_image ? (
-                                <img src={activity.assets.large_image} alt={activity.name} className="premid-icon" />
-                            ) : (
-                                <Music size={24} className="premid-icon-placeholder" />
-                            )}
-                            <div className="premid-details">
-                                {activity.details && <span className="premid-name">{activity.details}</span>}
-                                {activity.state && <span className="premid-state">{activity.state}</span>}
-                            </div>
+                            <ActivityContent />
                         </a>
                     ) : (
                         <div className="premid-activity">
-                            {activity.assets?.large_image ? (
-                                <img src={activity.assets.large_image} alt={activity.name} className="premid-icon" />
-                            ) : (
-                                <Music size={24} className="premid-icon-placeholder" />
-                            )}
-                            <div className="premid-details">
-                                {activity.details && <span className="premid-name">{activity.details}</span>}
-                                {activity.state && <span className="premid-state">{activity.state}</span>}
-                            </div>
+                            <ActivityContent />
                         </div>
                     )}
                     <div className="premid-platform">
