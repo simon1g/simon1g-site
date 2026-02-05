@@ -13,8 +13,7 @@ export default function LazyImage({
     alt,
     className,
     decoding = 'async',
-    loading = 'eager',
-    loading = 'lazy',
+    loading: imageLoading = 'eager',
     fetchPriority = 'low',
     ...props
 }) {
@@ -53,7 +52,7 @@ export default function LazyImage({
             src={src}
             alt={alt}
             className={className}
-            loading={loading}
+            loading={imageLoading}
             decoding={decoding}
             fetchPriority={fetchPriority}
             onLoad={() => setHasLoaded(true)}
