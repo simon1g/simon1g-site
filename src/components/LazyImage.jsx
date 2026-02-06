@@ -9,57 +9,69 @@ const THRESHOLD = 0.01;
  * avoiding double-lazy delays (IO + loading="lazy").
  */
 export default function LazyImage({
-    src,
-    alt,
-    className,
-    decoding = 'async',
-    loading = 'eager',
-    loading = 'lazy',
-    fetchPriority = 'low',
-    ...props
+  src,
+  alt,
+  className,
+  decoding = 'async',
+  loading = 'eager', // ✅ single, intentional default
+  fetchPriority = 'low',
+  ...props
 }) {
-    const [inView, setInView] = useState(false);
-    const [hasLoaded, setHasLoaded] = useState(false);
-    const wrapperRef = useRef(null);
+  const [inView, setInView] = useState(false);
+  const [hasLoaded, setHasLoaded] = useState(false);
+  const wrapperRef = useRef(null);
 
-    useEffect(() => {
-        const el = wrapperRef.current;
-        if (!el) return;
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
 
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) setInView(true);
-            },
-            { rootMargin: ROOT_MARGIN, threshold: THRESHOLD }
-        );
-        observer.observe(el);
-        return () => observer.disconnect();
-    }, []);
-
-    if (!inView) {
-        return (
-            <div
-                ref={wrapperRef}
-                className={className}
-                style={{ width: '100%', height: '100%', minHeight: 1, background: 'var(--card-bg)' }}
-                aria-hidden="true"
-            />
-        );
-    }
-
-    return (
-        <img
-            ref={wrapperRef}
-            src={src}
-            alt={alt}
-            className={className}
-            loading={loading}
-            decoding={decoding}
-            fetchPriority={fetchPriority}
-            onLoad={() => setHasLoaded(true)}
-            onError={() => setHasLoaded(true)}
-            style={{ opacity: hasLoaded ? 1 : 0.4, transition: 'opacity 0.2s ease-out', background: 'var(--card-bg)' }}
-            {...props}
-        />
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect(); // ✅ stop observing once visible
+        }
+      },
+      { rootMargin: ROOT_MARGIN, threshold: THRESHOLD }
     );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  if (!inView) {
+    return (
+      <div
+        ref={wrapperRef}
+        className={className}
+        style={{
+          width: '100%',
+          height: '100%',
+          minHeight: 1,
+          background: 'var(--card-bg)',
+        }}
+        aria-hidden="true"
+      />
+    );
+  }
+
+  return (
+    <img
+      ref={wrapperRef}
+      src={src}
+      alt={alt}
+      className={className}
+      loading={loading}
+      decoding={decoding}
+      fetchPriority={fetchPriority}
+      onLoad={() => setHasLoaded(true)}
+      onError={() => setHasLoaded(true)}
+      style={{
+        opacity: hasLoaded ? 1 : 0.4,
+        transition: 'opacity 0.2s ease-out',
+        background: 'var(--card-bg)',
+      }}
+      {...props}
+    />
+  );
 }
