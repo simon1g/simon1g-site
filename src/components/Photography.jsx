@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useGallery } from '../hooks/useGallery';
 import Lightbox from './Lightbox';
 import LazyImage from './LazyImage';
@@ -7,6 +7,20 @@ import '../styles/photography.css';
 export default function Photography() {
     const { images, loading } = useGallery('pics');
     const [selectedImage, setSelectedImage] = useState(null);
+
+    // Preload first 2 images
+    useEffect(() => {
+        if (images.length > 0) {
+            images.slice(0, 2).forEach((src) => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = src;
+                link.type = 'image/webp';
+                document.head.appendChild(link);
+            });
+        }
+    }, [images]);
 
     if (loading) {
         return (
@@ -38,7 +52,10 @@ export default function Photography() {
                             src={src}
                             alt={`Photo ${index + 1}`}
                             className="photo-img"
-                            fetchPriority={index < 6 ? 'high' : 'low'}
+                            // ⭐ CHANGE: Only first 2 images high priority
+                            fetchPriority={index < 2 ? 'high' : undefined}
+                            // ⭐ CHANGE: First 2 eager, rest lazy
+                            loading={index < 2 ? 'eager' : 'lazy'}
                         />
                     </div>
                 ))}

@@ -1,9 +1,36 @@
-# Cloudflare Pages headers for better static image delivery and cache efficiency.
+# Cloudflare Pages headers for optimal image delivery and caching
+
+# ============================================
+# VITE BUILD ASSETS (src/assets -> /assets/)
+# ============================================
+# All Vite-processed assets get content-hashed filenames (e.g., image.abc123.webp)
+# This means they're immutable forever - perfect for aggressive caching!
+
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+  Accept: image/webp,image/*,*/*;q=0.8
+  Vary: Accept
 
+# ============================================
+# PUBLIC FOLDER ASSETS
+# ============================================
+# These are NOT processed by Vite and keep their original names
+
+# Game icons (in public/games/) - update when games.json changes
 /games/*
-  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+  Accept: image/webp,image/png,image/jpeg,image/*,*/*;q=0.8
+  Vary: Accept
 
+# JSON data (can update frequently)
 /data/*
   Cache-Control: public, max-age=300, stale-while-revalidate=300
+  Content-Type: application/json
+
+# Favicon (update infrequently)
+/favicon.ico
+  Cache-Control: public, max-age=604800
+
+# robots.txt and other static files
+/*.txt
+  Cache-Control: public, max-age=3600

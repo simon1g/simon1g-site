@@ -1,35 +1,51 @@
 import React, { useState, useRef, useEffect } from 'react';
 
-const ROOT_MARGIN = '600px';
+const ROOT_MARGIN = '600px'; // Load images 600px before they enter viewport
 const THRESHOLD = 0.01;
 
 /**
- * Renders an img only when it enters (or gets near) the viewport.
- * Uses IntersectionObserver for scheduling and eager image fetch once mounted,
- * avoiding double-lazy delays (IO + loading="lazy").
+ * Optimized lazy loading image component for WebP images.
+ * Features:
+ * - IntersectionObserver for viewport detection
+ * - Proper loading attribute handling
+ * - Fade-in animation on load
+ * - Responsive image support (optional)
  */
 export default function LazyImage({
   src,
   alt,
   className,
   decoding = 'async',
-  loading = 'eager', // ✅ single, intentional default
-  fetchPriority = 'low',
+  loading, // Allow override but use smart default
+  fetchPriority,
+  sizes,
+  srcSet,
   ...props
 }) {
   const [inView, setInView] = useState(false);
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const wrapperRef = useRef(null);
+  const imgRef = useRef(null);
+
+  // Determine optimal loading strategy
+  const effectiveLoading = loading || (fetchPriority === 'high' ? 'eager' : 'lazy');
 
   useEffect(() => {
     const el = wrapperRef.current;
     if (!el) return;
 
+    // For high-priority images, skip IntersectionObserver and show immediately
+    if (fetchPriority === 'high') {
+      setInView(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          observer.disconnect(); // ✅ stop observing once visible
+          observer.disconnect();
         }
       },
       { rootMargin: ROOT_MARGIN, threshold: THRESHOLD }
@@ -37,7 +53,21 @@ export default function LazyImage({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [fetchPriority]);
+
+  // Preload high-priority images
+  useEffect(() => {
+    if (fetchPriority === 'high' && inView && src && !hasLoaded) {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.href = src;
+      if (srcSet) link.imageSrcset = srcSet;
+      if (sizes) link.imageSizes = sizes;
+      document.head.appendChild(link);
+      return () => document.head.removeChild(link);
+    }
+  }, [src, srcSet, sizes, fetchPriority, inView, hasLoaded]);
 
   if (!inView) {
     return (
@@ -57,19 +87,25 @@ export default function LazyImage({
 
   return (
     <img
-      ref={wrapperRef}
+      ref={imgRef}
       src={src}
       alt={alt}
       className={className}
-      loading={loading}
+      loading={effectiveLoading}
       decoding={decoding}
-      fetchPriority={fetchPriority}
+      fetchpriority={fetchPriority}
+      sizes={sizes}
+      srcSet={srcSet}
       onLoad={() => setHasLoaded(true)}
-      onError={() => setHasLoaded(true)}
+      onError={() => {
+        setHasError(true);
+        setHasLoaded(true);
+      }}
       style={{
-        opacity: hasLoaded ? 1 : 0.4,
-        transition: 'opacity 0.2s ease-out',
-        background: 'var(--card-bg)',
+        opacity: hasLoaded ? 1 : 0,
+        transition: 'opacity 0.3s ease-out',
+        background: hasError ? 'var(--card-bg)' : 'transparent',
+        ...props.style,
       }}
       {...props}
     />

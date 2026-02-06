@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useGallery } from '../hooks/useGallery';
 import Lightbox from './Lightbox';
 import LazyImage from './LazyImage';
@@ -7,6 +7,20 @@ import '../styles/astrophotography.css';
 export default function Astrophotography() {
     const { images, loading } = useGallery('astropics');
     const [selectedImage, setSelectedImage] = useState(null);
+
+    // Preload first 2 images
+    useEffect(() => {
+        if (images.length > 0) {
+            images.slice(0, 2).forEach((src) => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = src;
+                link.type = 'image/webp';
+                document.head.appendChild(link);
+            });
+        }
+    }, [images]);
 
     if (loading) {
         return (
@@ -38,7 +52,10 @@ export default function Astrophotography() {
                             src={src}
                             alt={`Astrophoto ${index + 1}`}
                             className="astro-img"
-                            fetchPriority={index < 6 ? 'high' : 'low'}
+                            // ⭐ CHANGE: Only first 2 images high priority
+                            fetchPriority={index < 2 ? 'high' : undefined}
+                            // ⭐ CHANGE: First 2 eager, rest lazy
+                            loading={index < 2 ? 'eager' : 'lazy'}
                         />
                     </div>
                 ))}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useGallery } from '../hooks/useGallery';
 import Lightbox from './Lightbox';
 import LazyImage from './LazyImage';
@@ -7,6 +7,20 @@ import '../styles/pixelart.css';
 export default function PixelArt() {
     const { images, loading } = useGallery('pixelart');
     const [selectedImage, setSelectedImage] = useState(null);
+
+    // Preload first 2 images (above the fold)
+    useEffect(() => {
+        if (images.length > 0) {
+            images.slice(0, 2).forEach((src, idx) => {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = src;
+                link.type = 'image/webp';
+                document.head.appendChild(link);
+            });
+        }
+    }, [images]);
 
     if (loading) {
         return (
@@ -38,6 +52,10 @@ export default function PixelArt() {
                             src={src}
                             alt={`Pixel Art ${index + 1}`}
                             className="pixel-img"
+                            // ⭐ CHANGE: Only first 2 images high priority
+                            fetchPriority={index < 2 ? 'high' : undefined}
+                            // ⭐ CHANGE: First 2 eager, rest lazy
+                            loading={index < 2 ? 'eager' : 'lazy'}
                         />
                     </div>
                 ))}
