@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useSound } from '../context/SoundContext';
+import LazyImage from './LazyImage';
 import '../styles/games.css';
 
 export default function Games() {
+    const { playHover, playClick } = useSound();
     const [games, setGames] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -44,13 +47,13 @@ export default function Games() {
                         className="game-card"
                         aria-label={`Open ${game.name} page`}
                         title={game.name}
+                        onMouseEnter={playHover}
+                        onClick={playClick}
                     >
-                        <img
+                        <LazyImage
                             src={game.icon}
                             alt={game.name}
                             className="game-icon"
-                            loading="lazy"
-                            decoding="async"
                         />
                     </a>
                 ))}
