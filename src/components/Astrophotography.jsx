@@ -8,14 +8,24 @@ export default function Astrophotography() {
     const { images, loading } = useGallery('astropics');
     const [selectedImage, setSelectedImage] = useState(null);
 
+    // Common sizes attribute for the grid
+    const sizes = "(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw";
+
     // Preload first 2 images
     useEffect(() => {
         if (images.length > 0) {
-            images.slice(0, 2).forEach((src) => {
+            images.slice(0, 2).forEach((img) => {
                 const link = document.createElement('link');
                 link.rel = 'preload';
                 link.as = 'image';
-                link.href = src;
+
+                if (img.srcSet) {
+                    link.imagesrcset = img.srcSet;
+                    link.imagesizes = sizes;
+                } else {
+                    link.href = img.src;
+                }
+
                 link.type = 'image/webp';
                 document.head.appendChild(link);
             });
@@ -39,22 +49,22 @@ export default function Astrophotography() {
         <div className="container section">
             <h2 className="section-title">Astrophotography</h2>
             <div className="astro-grid">
-                {images.map((src, index) => (
+                {images.map((img, index) => (
                     <div
-                        key={src}
+                        key={img.src}
                         className="astro-item"
-                        onClick={() => setSelectedImage(src)}
+                        onClick={() => setSelectedImage(img.src)}
                         role="button"
                         tabIndex={0}
-                        onKeyDown={(e) => e.key === 'Enter' && setSelectedImage(src)}
+                        onKeyDown={(e) => e.key === 'Enter' && setSelectedImage(img.src)}
                     >
                         <LazyImage
-                            src={src}
+                            src={img.src}
+                            srcSet={img.srcSet}
+                            sizes={sizes}
                             alt={`Astrophoto ${index + 1}`}
                             className="astro-img"
-                            // ⭐ CHANGE: Only first 2 images high priority
                             fetchPriority={index < 2 ? 'high' : undefined}
-                            // ⭐ CHANGE: First 2 eager, rest lazy
                             loading={index < 2 ? 'eager' : 'lazy'}
                         />
                     </div>

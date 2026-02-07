@@ -22,7 +22,7 @@ export default function LazyImage({
   srcSet,
   ...props
 }) {
-  const [inView, setInView] = useState(false);
+  const [inView, setInView] = useState(fetchPriority === 'high');
   const [hasLoaded, setHasLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const wrapperRef = useRef(null);
@@ -54,8 +54,6 @@ export default function LazyImage({
     observer.observe(el);
     return () => observer.disconnect();
   }, [fetchPriority]);
-
-
 
   if (!inView) {
     return (
@@ -90,9 +88,9 @@ export default function LazyImage({
         setHasLoaded(true);
       }}
       style={{
-        opacity: hasLoaded ? 1 : 0,
-        transition: 'opacity 0.3s ease-out',
-        background: hasError ? 'var(--card-bg)' : 'transparent',
+        opacity: (hasLoaded || fetchPriority === 'high') ? 1 : 0,
+        transition: fetchPriority === 'high' ? 'none' : 'opacity 0.3s ease-out',
+        background: (hasError || (fetchPriority === 'high' && !hasLoaded)) ? 'transparent' : (hasLoaded ? 'transparent' : 'var(--card-bg)'),
         ...props.style,
       }}
       {...props}
