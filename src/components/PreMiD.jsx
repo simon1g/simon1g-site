@@ -4,6 +4,20 @@ import '../styles/premid.css';
 
 const API_ENDPOINT = 'https://simon1g-site.pages.dev/api/premid';
 
+const ActivityContent = ({ activity }) => (
+    <>
+        {activity.assets?.large_image ? (
+            <img src={activity.assets.large_image} alt={activity.name} className="premid-icon" />
+        ) : (
+            <Music size={24} className="premid-icon-placeholder" />
+        )}
+        <div className="premid-details">
+            {activity.details && <span className="premid-name">{activity.details}</span>}
+            {activity.state && <span className="premid-state">{activity.state}</span>}
+        </div>
+    </>
+);
+
 export default function PreMiD() {
     const [data, setData] = useState({ active_activity: null });
     const [loading, setLoading] = useState(true);
@@ -58,19 +72,8 @@ export default function PreMiD() {
         </div>
     );
 
-    const ActivityContent = () => (
-        <>
-            {activity.assets?.large_image ? (
-                <img src={activity.assets.large_image} alt={activity.name} className="premid-icon" />
-            ) : (
-                <Music size={24} className="premid-icon-placeholder" />
-            )}
-            <div className="premid-details">
-                {activity.details && <span className="premid-name">{activity.details}</span>}
-                {activity.state && <span className="premid-state">{activity.state}</span>}
-            </div>
-        </>
-    );
+
+
 
     return (
         <div className="premid-container">
@@ -84,11 +87,11 @@ export default function PreMiD() {
                             rel="noopener noreferrer"
                             className="premid-activity is-clickable"
                         >
-                            <ActivityContent />
+                            <ActivityContent activity={activity} />
                         </a>
                     ) : (
                         <div className="premid-activity">
-                            <ActivityContent />
+                            <ActivityContent activity={activity} />
                         </div>
                     )}
                     <div className="premid-platform">

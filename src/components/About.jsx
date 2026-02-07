@@ -43,18 +43,8 @@ export default function About() {
         <div className="container section">
             <h2 className="section-title">About</h2>
 
-            <div className="glass-card" style={{
-                padding: '2rem',
-                maxWidth: '800px',
-                margin: '0 auto 3rem auto',
-                textAlign: 'center'
-            }}>
-                <p style={{
-                    fontSize: '1.2rem',
-                    color: 'var(--text-secondary)',
-                    lineHeight: '1.6',
-                    margin: 0
-                }}>
+            <div className="glass-card about-card intro">
+                <p className="about-card-text">
                     Hello again, Simon here at the big age of 23, im a cool guy (i think) who likes shit ton of things, i'm always happy and open to try new things, scroll down fro more info
                 </p>
             </div>
@@ -99,14 +89,7 @@ export default function About() {
                 ))}
             </div>
 
-            <p style={{
-                textAlign: 'center',
-                maxWidth: '700px',
-                margin: '6rem auto 0.5rem auto',
-                fontSize: '1.2rem',
-                color: 'var(--text-secondary)',
-                lineHeight: '1.6'
-            }}>
+            <p className="about-links-text">
                 Links to my socials:
             </p>
 
@@ -136,21 +119,11 @@ export default function About() {
                     <span>Steam</span>
                 </a>
             </div>
-            <div className="glass-card" style={{
-                padding: '2rem',
-                maxWidth: '900px',
-                margin: '30px auto 3rem auto',
-                textAlign: 'center'
-            }}>
-                <p style={{
-                    fontSize: '1.2rem',
-                    color: 'var(--text-secondary)',
-                    lineHeight: '1.6',
-                    margin: 0
-                }}>
+            <div className="glass-card about-card bio">
+                <p className="about-card-text">
                     Also im an ambivert and i have level 1 autism so i may be a bit stiff sometimes, suffer from anxiety ¯\_(ツ)_/¯ it is what it is, im a short king of 174cm (or 5'7 american tall) from Poland
-                     (<a href="https://tenor.com/view/polska-gurom-polska-gurom-pudzian-pudzianowski-gif-21488300" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-color)'}}>POLSKA GUROM</a>). 
-                    Spend half of my time outside, hiking, cycling, walking, stargazing and the other half inside mostly, gaming, sometimes programming or drawing or just being sad or happy. I'm also a massive weeb soooo, also favorite color being maroon (if it wasnt obvious enough), 
+                    (<a href="https://tenor.com/view/polska-gurom-polska-gurom-pudzian-pudzianowski-gif-21488300" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-color)' }}>POLSKA GUROM</a>).
+                    Spend half of my time outside, hiking, cycling, walking, stargazing and the other half inside mostly, gaming, sometimes programming or drawing or just being sad or happy. I'm also a massive weeb soooo, also favorite color being maroon (if it wasnt obvious enough),
                     lover of monster energy drinks and and i wish i had a vtuber girlfriend but beggers cant be choosers
                 </p>
             </div>

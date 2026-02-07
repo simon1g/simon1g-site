@@ -55,19 +55,7 @@ export default function LazyImage({
     return () => observer.disconnect();
   }, [fetchPriority]);
 
-  // Preload high-priority images
-  useEffect(() => {
-    if (fetchPriority === 'high' && inView && src && !hasLoaded) {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'image';
-      link.href = src;
-      if (srcSet) link.imageSrcset = srcSet;
-      if (sizes) link.imageSizes = sizes;
-      document.head.appendChild(link);
-      return () => document.head.removeChild(link);
-    }
-  }, [src, srcSet, sizes, fetchPriority, inView, hasLoaded]);
+
 
   if (!inView) {
     return (

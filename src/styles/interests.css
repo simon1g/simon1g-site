@@ -274,3 +274,35 @@
     color: #00ADEE;
     border-color: #00ADEE;
 }
+
+/* About Page Extra Styles */
+.about-card {
+    padding: 2rem;
+    text-align: center;
+    margin: 0 auto 3rem auto;
+}
+
+.about-card.intro {
+    max-width: 800px;
+}
+
+.about-card.bio {
+    max-width: 900px;
+    margin-top: 30px;
+}
+
+.about-card-text {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.about-links-text {
+    text-align: center;
+    max-width: 700px;
+    margin: 6rem auto 0.5rem auto;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
