@@ -1,5 +1,6 @@
 import React from 'react';
 import { Telescope, Code, Palette, Gamepad2, Mountain, Bike, Star, Tv, Twitter, Youtube, Music, PawPrint, Cloud, Utensils } from 'lucide-react';
+import { useSound } from '../context/SoundContext';
 import '../styles/interests.css';
 
 const NGLIcon = ({ size = 24 }) => (
@@ -23,6 +24,7 @@ const RedditIcon = ({ size = 24 }) => (
 );
 
 export default function About() {
+    const { playHover, playClick } = useSound();
     const [activeInterest, setActiveInterest] = React.useState(null);
 
     const interests = [
@@ -74,7 +76,11 @@ export default function About() {
                     <div
                         key={item.name}
                         className={`interest-item ${activeInterest?.name === item.name ? 'active' : ''}`}
-                        onClick={() => setActiveInterest(activeInterest?.name === item.name ? null : item)}
+                        onClick={() => {
+                            playClick();
+                            setActiveInterest(activeInterest?.name === item.name ? null : item);
+                        }}
+                        onMouseEnter={playHover}
                     >
                         <div className="interest-header">
                             <div className="interest-icon">
@@ -94,27 +100,27 @@ export default function About() {
             </p>
 
             <div className="about-socials">
-                <a href="https://twitter.com/simon1g_" target="_blank" rel="noopener noreferrer" className="about-social-link twitter">
+                <a href="https://twitter.com/simon1g_" target="_blank" rel="noopener noreferrer" className="about-social-link twitter" onMouseEnter={playHover} onClick={playClick}>
                     <Twitter size={24} />
                     <span>Twitter</span>
                 </a>
-                <a href="https://www.youtube.com/@imon1G" target="_blank" rel="noopener noreferrer" className="about-social-link youtube">
+                <a href="https://www.youtube.com/@imon1G" target="_blank" rel="noopener noreferrer" className="about-social-link youtube" onMouseEnter={playHover} onClick={playClick}>
                     <Youtube size={24} />
                     <span>YouTube</span>
                 </a>
-                <a href="https://ngl.link/simon1g" target="_blank" rel="noopener noreferrer" className="about-social-link ngl">
+                <a href="https://ngl.link/simon1g" target="_blank" rel="noopener noreferrer" className="about-social-link ngl" onMouseEnter={playHover} onClick={playClick}>
                     <NGLIcon size={24} />
                     <span>NGL</span>
                 </a>
-                <a href="https://soundcloud.com/simon1g-xyz" target="_blank" rel="noopener noreferrer" className="about-social-link soundcloud">
+                <a href="https://soundcloud.com/simon1g-xyz" target="_blank" rel="noopener noreferrer" className="about-social-link soundcloud" onMouseEnter={playHover} onClick={playClick}>
                     <Cloud size={24} />
                     <span>SoundCloud</span>
                 </a>
-                <a href="https://www.reddit.com/user/_ssSimon_/" target="_blank" rel="noopener noreferrer" className="about-social-link reddit">
+                <a href="https://www.reddit.com/user/_ssSimon_/" target="_blank" rel="noopener noreferrer" className="about-social-link reddit" onMouseEnter={playHover} onClick={playClick}>
                     <RedditIcon size={24} />
                     <span>Reddit</span>
                 </a>
-                <a href="https://steamcommunity.com/id/simon1g/" target="_blank" rel="noopener noreferrer" className="about-social-link steam">
+                <a href="https://steamcommunity.com/id/simon1g/" target="_blank" rel="noopener noreferrer" className="about-social-link steam" onMouseEnter={playHover} onClick={playClick}>
                     <SteamIcon size={24} />
                     <span>Steam</span>
                 </a>

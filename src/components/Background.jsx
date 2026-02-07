@@ -28,6 +28,20 @@ const randomCloudsOnParabola = (count = 10) =>
     });
 
 const Background = () => {
+    const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
+
+    React.useEffect(() => {
+        const handleMouseMove = (e) => {
+            // Convert to normalized coordinates -1 to 1
+            const x = (e.clientX / window.innerWidth) * 2 - 1;
+            const y = (e.clientY / window.innerHeight) * 2 - 1;
+            setMousePos({ x, y });
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, []);
+
     const stars = useMemo(() => {
         return Array.from({ length: 150 }).map((_, i) => ({
             id: i,
@@ -36,6 +50,7 @@ const Background = () => {
             size: Math.random() * 2 + 1,
             duration: `${Math.random() * 3 + 2}s`,
             delay: `${Math.random() * 5}s`,
+            parallax: Math.random() * 15 + 5, // Parallax intensity
         }));
     }, []);
 
@@ -49,11 +64,24 @@ const Background = () => {
         }));
     }, []);
 
-    const sunPosition = useMemo(() => randomPointOnParabola(), []);
-    const clouds = useMemo(() => randomCloudsOnParabola(10), []);
+    const sunPosition = useMemo(() => {
+        const pos = randomPointOnParabola();
+        return { ...pos, parallax: 15 }; // Sun parallax intensity
+    }, []);
+
+    const clouds = useMemo(() => {
+        const baseClouds = randomCloudsOnParabola(10);
+        return baseClouds.map(c => ({
+            ...c,
+            parallax: Math.random() * 20 + 10 // Varying cloud parallax
+        }));
+    }, []);
 
     return (
-        <div className="background">
+        <div className="background" style={{
+            '--mouse-x': mousePos.x,
+            '--mouse-y': mousePos.y
+        }}>
             <div className="star-container">
                 {stars.map((star) => (
                     <div
@@ -65,7 +93,9 @@ const Background = () => {
                             width: `${star.size}px`,
                             height: `${star.size}px`,
                             '--duration': star.duration,
+                            '--parallax': star.parallax,
                             animationDelay: star.delay,
+                            transform: `translate(calc(var(--mouse-x) * var(--parallax) * 1px), calc(var(--mouse-y) * var(--parallax) * 1px))`
                         }}
                     />
                 ))}
@@ -89,7 +119,8 @@ const Background = () => {
                         style={{
                             left: `${sunPosition.x}%`,
                             top: `${sunPosition.y}%`,
-                            transform: 'translate(-50%, -50%)',
+                            '--parallax': sunPosition.parallax,
+                            transform: `translate(calc(-50% + var(--mouse-x) * var(--parallax) * 1px), calc(-50% + var(--mouse-y) * var(--parallax) * 1px))`,
                         }}
                     />
                 </div>
@@ -101,7 +132,8 @@ const Background = () => {
                             style={{
                                 left: `${cloud.left}%`,
                                 top: `${cloud.top}%`,
-                                transform: `translate(-50%, -50%) scale(${cloud.scale})`,
+                                '--parallax': cloud.parallax,
+                                transform: `translate(calc(-50% + var(--mouse-x) * var(--parallax) * 1px), calc(-50% + var(--mouse-y) * var(--parallax) * 1px)) scale(${cloud.scale})`,
                                 opacity: cloud.opacity,
                             }}
                         />

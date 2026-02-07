@@ -4,10 +4,14 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
 import './styles/global.css'
 
+import { SoundProvider } from './context/SoundContext.jsx'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <SoundProvider>
+        <App />
+      </SoundProvider>
     </BrowserRouter>
   </React.StrictMode>,
 )

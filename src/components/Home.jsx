@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSound } from '../context/SoundContext';
 
 export default function Home() {
+    const { playHover, playClick } = useSound();
     return (
         <div className="container section" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '80vh', textAlign: 'center' }}>
             <h1 style={{ fontSize: '3rem', fontWeight: '800', marginBottom: '1rem' }}>
@@ -12,15 +14,15 @@ export default function Home() {
             </p>
 
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-                <Link to="/pixelart" className="home-btn">Pixel Art</Link>
-                <Link to="/photography" className="home-btn">Photography</Link>
-                <Link to="/astropics" className="home-btn">Astrophotography</Link>
-                <Link to="/about" className="home-btn">About</Link>
-                <Link to="/games" className="home-btn">Games</Link>
+                <Link to="/pixelart" className="home-btn" onMouseEnter={playHover} onClick={playClick}>Pixel Art</Link>
+                <Link to="/photography" className="home-btn" onMouseEnter={playHover} onClick={playClick}>Photography</Link>
+                <Link to="/astropics" className="home-btn" onMouseEnter={playHover} onClick={playClick}>Astrophotography</Link>
+                <Link to="/about" className="home-btn" onMouseEnter={playHover} onClick={playClick}>About</Link>
+                <Link to="/games" className="home-btn" onMouseEnter={playHover} onClick={playClick}>Games</Link>
             </div>
 
             <p style={{ marginTop: '3rem', color: 'var(--text-secondary)', fontSize: '1.2rem' }}>
-                Have a question for me? Send an <a href="https://ngl.link/simon1g" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-color)', textDecoration: 'none', fontWeight: '600' }}>ngl</a> to me.
+                Have a question for me? Send an <a href="https://ngl.link/simon1g" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-color)', textDecoration: 'none', fontWeight: '600' }} onMouseEnter={playHover} onClick={playClick}>ngl</a> to me.
             </p>
 
             <style>{`

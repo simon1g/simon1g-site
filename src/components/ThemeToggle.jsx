@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Sun, Moon } from 'lucide-react';
+import { useSound } from '../context/SoundContext';
 
 export default function ThemeToggle() {
+    const { playHover, playClick, playSuccess } = useSound();
     const [theme, setTheme] = useState(() => {
-        // Check local storage or system preference
         if (typeof window !== 'undefined' && window.localStorage) {
             const stored = localStorage.getItem('theme');
             if (stored) return stored;
         }
-        return 'dark'; // Default to dark
+        return 'dark';
     });
 
     useEffect(() => {
@@ -22,12 +23,14 @@ export default function ThemeToggle() {
     }, [theme]);
 
     const toggleTheme = () => {
+        playSuccess(); // Success sound for theme toggle
         setTheme(prev => prev === 'light' ? 'dark' : 'light');
     };
 
     return (
         <button
             onClick={toggleTheme}
+            onMouseEnter={playHover}
             className="theme-toggle"
             aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
         >

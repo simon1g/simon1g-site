@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { NavLink } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Volume2, VolumeX } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import { useSound } from '../context/SoundContext';
 import '../styles/navbar.css';
 
 const MOBILE_BREAKPOINT = 768;
@@ -11,6 +12,7 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [isOnline, setIsOnline] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const { playHover, playClick, isEnabled, toggleSound } = useSound();
 
     useEffect(() => {
         const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
@@ -57,7 +59,11 @@ export default function Navbar() {
                     key={item.name}
                     to={item.path}
                     className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                        playClick();
+                        setIsOpen(false);
+                    }}
+                    onMouseEnter={playHover}
                 >
                     {item.name}
                 </NavLink>
@@ -69,29 +75,50 @@ export default function Navbar() {
         <>
             <nav className="navbar">
                 <div className="navbar-container">
-                    <NavLink to="/" className="brand" onClick={() => setIsOpen(false)}>
+                    <NavLink
+                        to="/"
+                        className="brand"
+                        onClick={() => {
+                            playClick();
+                            setIsOpen(false);
+                        }}
+                        onMouseEnter={playHover}
+                    >
                         simon1g
                     </NavLink>
 
                     {!isMobile && <div className="nav-links">{navLinksContent}</div>}
 
                     <div className="mobile-right-group">
-                    <div className="nav-actions">
-                        <span
-                            className={`status-indicator ${isOnline ? 'status-online' : ''}`}
-                            title={isOnline ? "Online" : "Offline"}
-                            aria-label={isOnline ? "Status: Online" : "Status: Offline"}
-                        />
+                        <div className="nav-actions">
+                            <span
+                                className={`status-indicator ${isOnline ? 'status-online' : ''}`}
+                                title={isOnline ? "Online" : "Offline"}
+                                aria-label={isOnline ? "Status: Online" : "Status: Offline"}
+                            />
 
-                        <ThemeToggle />
-                    </div>
+                            <button
+                                className="theme-toggle"
+                                onClick={() => {
+                                    playClick();
+                                    toggleSound();
+                                }}
+                                onMouseEnter={playHover}
+                                title={isEnabled ? "Mute sounds" : "Unmute sounds"}
+                                aria-label={isEnabled ? "Mute sounds" : "Unmute sounds"}
+                            >
+                                {isEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}
+                            </button>
 
-                    <div className="hamburger" onClick={toggleMenu}>
-                        {isOpen ? <X size={24} /> : <Menu size={24} />}
+                            <ThemeToggle />
+                        </div>
+
+                        <div className="hamburger" onClick={toggleMenu}>
+                            {isOpen ? <X size={24} /> : <Menu size={24} />}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
             {isMobile &&
                 createPortal(
